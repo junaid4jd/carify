@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "956383533616",
+    "project_id": "carify-be8bb",
+    "storage_bucket": "carify-be8bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956383533616:android:bd96f6d93e8af1004aebf5",
+        "android_client_info": {
+          "package_name": "com.carify.ca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "956383533616-dpqjn4j3cipir4qvji198svtc4qq05h7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.carify.ca",
+            "certificate_hash": "d9083031c25f604203a3c6dd1a728a72ccbfec78"
+          }
+        },
+        {
+          "client_id": "956383533616-hssqpobmn6ho8khimtvloks223c5st50.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACy9PJReHZTfFUISXU36qpWukRY5jc2Lg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "956383533616-hssqpobmn6ho8khimtvloks223c5st50.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
