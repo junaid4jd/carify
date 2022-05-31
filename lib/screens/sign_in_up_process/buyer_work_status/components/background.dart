@@ -38,128 +38,94 @@ class _BackgroundState extends State<Background> {
         width: double.infinity,
         child: Scaffold(
           backgroundColor: Colors.white,
-          body: Column(
-           // alignment: Alignment.center,
+          body: Stack(
+            alignment: Alignment.center,
             children: <Widget>[
               // Back Arrow
-
-
-              SizedBox(
-                height: size.height * 0.05,
-              ),
-
-              Container(
-                width: size.width * 0.9,
-                child: Row(
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.arrow_back_ios_rounded),
-                      color: Color(0xFF00ff00),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => SignInUpScreen(
-                        //               usertype: 'dummy',
-                        //             )));
-                      },
-                    ),
-                  ],
+              Positioned(
+                top: 105,
+                right: 340,
+                child: IconButton(
+                  icon: const Icon(Icons.arrow_back_ios_rounded),
+                  color: const Color(0xFF00ff00),
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const GenderScreenBuyer()));
+                  },
                 ),
               ),
-              SizedBox(
-                height: size.height * 0.05,
-              ),
-
-
-              // Positioned(
-              //   top: 105,
-              //   right: 340,
-              //   child: IconButton(
-              //     icon: const Icon(Icons.arrow_back_ios_rounded),
-              //     color: const Color(0xFF00ff00),
-              //     onPressed: () {
-              //       Navigator.push(context, MaterialPageRoute(builder: (context) => const GenderScreenBuyer()));
-              //     },
-              //   ),
-              // ),
 
               // Screen title
-              Padding(
-                padding: const EdgeInsets.only(left: 50, right: 50),
-                child: Align(
-                  alignment: const Alignment(0.0, -0.6),
-                  child: Text(
-                    'My work status is',
-                    style: GoogleFonts.roboto(
-                      textStyle: titles,
-                      fontSize: 30,
+              Positioned(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 50, right: 50),
+                  child: Align(
+                    alignment: const Alignment(0.0, -0.6),
+                    child: Text(
+                      'My work status is',
+                      style: GoogleFonts.roboto(
+                        textStyle: titles,
+                        fontSize: 44,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
                   ),
                 ),
               ),
 
-              SizedBox(
-                height: size.height * 0.05,
-              ),
-
               // Radio Items and decoration
-              Padding(
-                padding: const EdgeInsets.only(),
-                child: Align(
-                    alignment: const Alignment(0.0, 0.12),
-                    child: Consumer<BuyerProvider>(
-                      builder: (context, userProvider, _) {
-                        return Container(
-                            height: size.height*0.5,
-                            width: size.width*0.85,
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: const Color(0xFFC4C4C4),
-                                ),
-                                borderRadius: const BorderRadius.all(Radius.circular(14))),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                RadioButton('Student',1,handleRadioValueChange,userProvider.usertypeBtnValue),
+              Positioned(
+                child: Padding(
+                  padding: const EdgeInsets.only(),
+                  child: Align(
+                      alignment: const Alignment(0.0, 0.12),
+                      child: Consumer<BuyerProvider>(
+                        builder: (context, userProvider, _) {
+                          return Container(
+                              height: 303,
+                              width: 297,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: const Color(0xFFC4C4C4),
+                                  ),
+                                  borderRadius: const BorderRadius.all(Radius.circular(14))),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  RadioButton('Student',1,handleRadioValueChange,userProvider.usertypeBtnValue),
 
-                                RadioButton('Part-time',2,handleRadioValueChange,userProvider.usertypeBtnValue),
+                                  RadioButton('Part-time',2,handleRadioValueChange,userProvider.usertypeBtnValue),
 
-                                RadioButton('Full-time',3,handleRadioValueChange,userProvider.usertypeBtnValue),
+                                  RadioButton('Full-time',3,handleRadioValueChange,userProvider.usertypeBtnValue),
 
-                                RadioButton('Unemployed',4,handleRadioValueChange,userProvider.usertypeBtnValue),
+                                  RadioButton('Unemployed',4,handleRadioValueChange,userProvider.usertypeBtnValue),
 
-                                RadioButton('Other',5,handleRadioValueChange,userProvider.usertypeBtnValue),
+                                  RadioButton('Other',5,handleRadioValueChange,userProvider.usertypeBtnValue),
 
-                                RadioButton('Prefer not to say',6,handleRadioValueChange,userProvider.usertypeBtnValue),
+                                  RadioButton('Prefer not to say',6,handleRadioValueChange,userProvider.usertypeBtnValue),
 
-                              ],
-                            ));
-                      },
-                    )),
+                                ],
+                              ));
+                        },
+                      )),
+                ),
               ),
-
-              Expanded(child: Container()),
 
               // Continue button
-              ElevatedButton(
-                  child: Text("Continue", style: GoogleFonts.roboto(textStyle: buttonText)),
-                  style: ElevatedButton.styleFrom(
-                      primary: const Color(0xFF00ff00),
-                      minimumSize: const Size(320, 50),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25))),
-                  onPressed: () {
+              Positioned(
+                  top: 660,
+                  child: ElevatedButton(
+                      child: Text("Continue", style: GoogleFonts.roboto(textStyle: buttonText)),
+                      style: ElevatedButton.styleFrom(
+                          primary: const Color(0xFF00ff00),
+                          minimumSize: const Size(320, 50),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25))),
+                      onPressed: () {
 
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const BuyerSchoolInfo()),
-                    );
-                  }),
-              SizedBox(
-                height: size.height * 0.05,
-              ),
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const BuyerSchoolInfo()),
+                        );
+                      })),
             ],
           ),
         ));

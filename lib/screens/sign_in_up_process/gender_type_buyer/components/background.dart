@@ -36,132 +36,137 @@ class Background extends StatelessWidget {
         child: Scaffold(
           backgroundColor: Colors.white,
 
-          body: Column(
-         //   alignment: Alignment.center,
+          body: Stack(
+            alignment: Alignment.center,
             children: <Widget>[
 
-              SizedBox(
-                height: size.height * 0.05,
-              ),
-              Container(
-                width: size.width * 0.9,
-                child: Row(
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.arrow_back_ios_rounded),
-                      color: Color(0xFF00ff00),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => SignInUpScreen(
-                        //               usertype: 'dummy',
-                        //             )));
-                      },
-                    ),
-                  ],
+
+
+              // Back Arrow
+              Positioned(
+                top: 105,
+                right: 340,
+                child: IconButton(
+                  icon: const Icon(Icons.arrow_back_ios_rounded),
+                  color: const Color(0xFF00ff00),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const BirthdayBuyer())
+                    );
+                  },
                 ),
               ),
 
-              SizedBox(height: size.height * 0.05),
 
-
-              Align(
-                alignment: const Alignment(0.10, -0.6),
-                child: Text('My Gender is',
-                    style: GoogleFonts.roboto (
-                      textStyle: titles,
-                        fontSize: 44
-                    )
-                ),
-              ),
-
-              SizedBox(height: size.height * 0.08),
-              // Female Button
-              SizedBox(
-                  height: size.height*0.075,
-                  width: size.width*0.9,
-                  child: TextButton(
-
-                      child: Text("Female".toUpperCase(),  style: GoogleFonts.roboto (
-                        textStyle: buttonText,
+              // Screen title
+              Positioned(
+                child: Align(
+                  alignment: const Alignment(0.10, -0.6),
+                  child: Text('My gender is',
+                      style: GoogleFonts.roboto (
+                        textStyle: titles,
+                          fontSize: 44
                       )
-                      ),
-                      style: ButtonStyle(
-                          padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(15)),
-                          foregroundColor: MaterialStateProperty.all<Color>(Colors.red),
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(28.0),
-                                  side: const BorderSide(color: Colors.grey, width: 3)
-                              )
+                  ),
+                ),
+              ),
+
+
+              // Female Button
+              Positioned(
+                  top: 260,
+                  child: SizedBox(
+                      height: 54,
+                      width: 330,
+                      child: TextButton(
+
+                          child: Text("Female".toUpperCase(),  style: GoogleFonts.roboto (
+                            textStyle: buttonText,
                           )
-                      ),
-                      onPressed: () {
-                        buyerData.changeGender = 'Female';
-                        Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => const BuyerWorkStatus()),
-                        );
-                      }
+                          ),
+                          style: ButtonStyle(
+                              padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(15)),
+                              foregroundColor: MaterialStateProperty.all<Color>(Colors.red),
+                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(28.0),
+                                      side: const BorderSide(color: Colors.grey, width: 3)
+                                  )
+                              )
+                          ),
+                          onPressed: () {
+                            buyerData.changeGender = 'Female';
+                            Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => const BuyerWorkStatus()),
+                            );
+                          }
+                      )
                   )
               ),
-              SizedBox(height: size.height * 0.05),
+
 
               // Male Button
-              SizedBox(
-                  height: size.height*0.075,
-                  width: size.width*0.9,
-                  child: TextButton(
-                      child: Text("Male".toUpperCase(),  style: GoogleFonts.roboto (
-                        textStyle: buttonText,
-                      )
-                      ),
-                      style: ButtonStyle(
-                          padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(15)),
-                          foregroundColor: MaterialStateProperty.all<Color>(Colors.red),
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(28.0),
-                                  side: const BorderSide(color: Colors.grey, width: 3)
-                              )
+              Positioned(
+                  top: 360,
+                  child: SizedBox(
+                      height: 54,
+                      width: 330,
+                      child: TextButton(
+                          child: Text("Male".toUpperCase(),  style: GoogleFonts.roboto (
+                            textStyle: buttonText,
                           )
-                      ),
-                      onPressed: () {
-                        buyerData.changeGender = 'Male';
-                        Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => const BuyerWorkStatus()),
-                        );
-                      }
+                          ),
+                          style: ButtonStyle(
+                              padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(15)),
+                              foregroundColor: MaterialStateProperty.all<Color>(Colors.red),
+                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(28.0),
+                                      side: const BorderSide(color: Colors.grey, width: 3)
+                                  )
+                              )
+                          ),
+                          onPressed: () {
+                            buyerData.changeGender = 'Male';
+                            Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => const BuyerWorkStatus()),
+                            );
+                          }
+                      )
                   )
               ),
-              SizedBox(height: size.height * 0.05),
+
+
 
               // Other button
-              SizedBox(
-                  height: size.height*0.075,
-                  width: size.width*0.9,
-                  child: TextButton(
-                      child: Text("Other".toUpperCase(),  style: GoogleFonts.roboto (
-                        textStyle: buttonText,
-                      )
-                      ),
-                      style: ButtonStyle(
-                          padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(15)),
-                          foregroundColor: MaterialStateProperty.all<Color>(Colors.red),
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(28.0),
-                                  side: const BorderSide(color: Colors.grey, width: 3)
-                              )
+              Positioned(
+                  top: 460,
+                  child: SizedBox(
+                      height: 54,
+                      width: 330,
+                      child: TextButton(
+                          child: Text("Other".toUpperCase(),  style: GoogleFonts.roboto (
+                            textStyle: buttonText,
                           )
-                      ),
-                      onPressed: () {
-                        buyerData.changeGender = 'Other';
-                        Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => const BuyerWorkStatus()),
-                        );
-                      }
+                          ),
+                          style: ButtonStyle(
+                              padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(15)),
+                              foregroundColor: MaterialStateProperty.all<Color>(Colors.red),
+                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(28.0),
+                                      side: const BorderSide(color: Colors.grey, width: 3)
+                                  )
+                              )
+                          ),
+                          onPressed: () {
+                            buyerData.changeGender = 'Other';
+                            Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => const BuyerWorkStatus()),
+                            );
+                          }
+                      )
                   )
               ),
 

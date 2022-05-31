@@ -27,66 +27,57 @@ class _FeaturesBuyerState extends State<FeaturesBuyer> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-          child: Column(
-             // alignment: Alignment.center,
-              children: <Widget>[
-            SizedBox(
-              height: size.height * 0.05,
-            ),
+          child: Stack(alignment: Alignment.center, children: <Widget>[
+        Container(
+          height: 800,
+        ),
 
-            Container(
-              width: size.width ,
-              child: Row(
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.arrow_back_ios_rounded),
-                    color: Color(0xFF00ff00),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => SignInUpScreen(
-                      //               usertype: 'dummy',
-                      //             )));
-                    },
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: size.height * 0.02,
-            ),
+        //Back Button
+        Positioned(
+          top: 105,
+          right: 340,
+          child: IconButton(
+            icon: const Icon(Icons.arrow_back_ios_rounded),
+            color: const Color(0xFF00ff00),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const CarDetailsBuyer()));
+            },
+          ),
+        ),
 
         //Screen Title
-        Padding(
-          padding: const EdgeInsets.only(left: 50, right: 50),
-          child: Align(
-            alignment: const Alignment(0.0, -0.6),
-            child: Text(
-              'Preferred\n Car features',
-              style: GoogleFonts.roboto(
-                textStyle: titles,
-                fontSize: 44,
+        Positioned(
+          top: 145,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 50, right: 50),
+            child: Align(
+              alignment: const Alignment(0.0, -0.6),
+              child: Text(
+                'Preferred\n Car features',
+                style: GoogleFonts.roboto(
+                  textStyle: titles,
+                  fontSize: 44,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
           ),
         ),
-                SizedBox(
-                  height: size.height * 0.02,
-                ),
+
         // Text
-        Padding(
-          padding: const EdgeInsets.only(left: 50, right: 50),
-          child: Align(
-            alignment: const Alignment(0.0, -0.6),
-            child: Text(
-              'Let us know what you are looking for\n in your car. features can be added\n or removed later',
-              style: GoogleFonts.roboto(
-                textStyle: smallText,
+        Positioned(
+          top: 260,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 50, right: 50),
+            child: Align(
+              alignment: const Alignment(0.0, -0.6),
+              child: Text(
+                'Let us know what you are looking for\n in your car. features can be added\n or removed later',
+                style: GoogleFonts.roboto(
+                  textStyle: smallText,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
           ),
         ),
@@ -94,10 +85,7 @@ class _FeaturesBuyerState extends State<FeaturesBuyer> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            //SizedBox(height: 90),
-            SizedBox(
-              height: size.height * 0.03,
-            ),
+            SizedBox(height: 90),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -135,9 +123,7 @@ class _FeaturesBuyerState extends State<FeaturesBuyer> {
                 ),
               ],
             ),
-            SizedBox(
-              height: size.height * 0.03,
-            ),
+            SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -175,9 +161,7 @@ class _FeaturesBuyerState extends State<FeaturesBuyer> {
                 ),
               ],
             ),
-            SizedBox(
-              height: size.height * 0.03,
-            ),
+            SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -215,9 +199,7 @@ class _FeaturesBuyerState extends State<FeaturesBuyer> {
                 ),
               ],
             ),
-            SizedBox(
-              height: size.height * 0.03,
-            ),
+            SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -257,24 +239,81 @@ class _FeaturesBuyerState extends State<FeaturesBuyer> {
             ),
           ],
         ),
-                SizedBox(
-                  height: size.height * 0.05,
+
+        // Positioned(
+        //     top: 340,
+        //   left:30,
+        //   child: customCheckbox(
+        //     text: "Push to start",
+        //   ),
+        // ),
+        // Positioned(
+        //   top: 340,
+        //   right:30,
+        //   child: customCheckbox(
+        //     text: "Wifi",
+        //   ),
+        // ),
+        // Positioned(
+        //   top: 400,
+        //   left:30,
+        //   child: customCheckbox(
+        //     text: "Bluetooth",
+        //   ),
+        // ),
+        // Positioned(
+        //   top: 400,
+        //   right:30,
+        //   child: customCheckbox(
+        //     text: "Touch Screen",
+        //   ),
+        // ),
+        // Positioned(
+        //   top: 460,
+        //   left:30,
+        //   child: customCheckbox(
+        //     text: "Mini-Fridge",
+        //   ),
+        // ),
+        // Positioned(
+        //   top: 460,
+        //   right:30,
+        //   child: customCheckbox(
+        //     text: "A/C",
+        //   ),
+        // ),
+        // Positioned(
+        //   top: 520,
+        //   left:30,
+        //   child: customCheckbox(
+        //     text: "TV",
+        //   ),
+        //
+        // ),
+        // Positioned(
+        //   top: 520,
+        //   right:30,
+        //   child: customCheckbox(
+        //     text: "Leather Seats",
+        //   ),
+        // ),
+        Positioned(
+            top: 650,
+            child: ElevatedButton(
+                child: Text(
+                  "Continue",
+                  style: GoogleFonts.roboto(textStyle: buttonText),
                 ),
-        ElevatedButton(
-            child: Text(
-              "Continue",
-              style: GoogleFonts.roboto(textStyle: buttonText),
-            ),
-            style: ElevatedButton.styleFrom(
-                primary: const Color(0xFF00ff00),
-                minimumSize: const Size(320, 50),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25))),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const AboutBuyer()),
-              );
-            }),
+                style: ElevatedButton.styleFrom(
+                    primary: const Color(0xFF00ff00),
+                    minimumSize: const Size(320, 50),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25))),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const AboutBuyer()),
+                  );
+                })),
       ])),
     );
   }

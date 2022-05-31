@@ -32,160 +32,159 @@ class _YearBuyerScreenState extends State<YearBuyerScreen> {
     Size size = MediaQuery
         .of(context)
         .size; //provides total height and width of screen for users
-    return Scaffold(
-      backgroundColor: Colors.white,
-
-      body: SizedBox(
+    return SizedBox(
         height: size.height,
         width: double.infinity,
-        child: Column(
-          //alignment: Alignment.center,
-          children: <Widget>[
+        child: Scaffold(
+          backgroundColor: Colors.white,
+
+          body: Stack(
+            alignment: Alignment.center,
+            children: <Widget>[
 
 
-            SizedBox(
-              height: size.height * 0.05,
-            ),
 
-            Container(
-              width: size.width * 0.9,
-              child: Row(
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.arrow_back_ios_rounded),
-                    color: Color(0xFF00ff00),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => SignInUpScreen(
-                      //               usertype: 'dummy',
-                      //             )));
-                    },
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: size.height * 0.05,
-            ),
-
-            // Screen title
-            Padding(
-              padding: const EdgeInsets.only(left:50,right:50),
-              child: Align(
-                alignment: const Alignment(0.0, -0.6),
-                child: Text('My Year',
-                  style: GoogleFonts.roboto (
-                    textStyle: titles,
-                    fontSize: 44,
-                  ),
-                  textAlign: TextAlign.center,
+              // Back Arrow
+              Positioned(
+                top: 105,
+                right: 340,
+                child: IconButton(
+                  icon: const Icon(Icons.arrow_back_ios_rounded),
+                  color: const Color(0xFF00ff00),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const AddressScreenBuyer())
+                    );
+                  },
                 ),
               ),
-            ),
-
-            SizedBox(
-              height: size.height * 0.05,
-            ),
-            // Text Field
-             Align(
-                 alignment: Alignment(0, -0.30),
-                 child: Padding(
-                   padding: EdgeInsets.fromLTRB(85, 0, 95, 10),
-                   child: DropdownButton(
-                     // value: selectedYear,
-                     // underline: Text("Select Year",style: TextStyle(fontSize: 16),),
-                     hint: selectedYear != "" ? Text("$selectedYear",style: TextStyle(fontSize: 16,color: Colors.black)) : Text('Select year',style: TextStyle(fontSize: 16,color: Colors.black),),
-                     isExpanded: true,
-                     iconEnabledColor: Color(0xFF00ff00),
-                     style: TextStyle(color: Colors.black, fontSize: 16),
-                     dropdownColor: Color(0xFF00ff00),
-                     focusColor: Colors.black,
-                     icon: Icon(Icons.keyboard_arrow_down),
-                     items: years.map((String items) {
-                       return DropdownMenuItem(
-                           value: items, child: Text(items));
-                     }).toList(),
-                     onChanged: (String? newValue) {
-                       setState(() {
-                         selectedYear = newValue!;
-                       });
-                     },
-                   ),
 
 
 
-
-                   // DropdownButton(
-                   //   items: years.map((String items) {
-                   //     return DropdownMenuItem(
-                   //       value: items,
-                   //       child: Text(items),
-                   //     );
-                   //   }).toList(),
-                   //
-                   //   onChanged: (val){
-                   //     setState(() {
-                   //       selectedYear = val.toString();
-                   //     });
-                   //   },
-                   // )
-                   // TextField(
-                   //     controller: yearController,
-                   //     style: TextStyle(fontSize: 18),
-                   //     keyboardType: TextInputType.name,
-                   //     decoration: InputDecoration(
-                   //         contentPadding: EdgeInsets.only(bottom: 4),
-                   //         isDense: true,
-                   //         hintText: "Undergrad Second Year"
-                   //     )),
-                 )
-             ),
+              // Screen title
+              Positioned(
+                child: Padding(
+                  padding: const EdgeInsets.only(left:50,right:50),
+                  child: Align(
+                    alignment: const Alignment(0.0, -0.6),
+                    child: Text('My Year',
+                      style: GoogleFonts.roboto (
+                        textStyle: titles,
+                        fontSize: 44,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ),
 
 
-            // Text
-            Align(
-              alignment: const Alignment(0.0, -0.20),
-              child: Text('Your program will be shown',
-                  style: GoogleFonts.roboto (
-                      textStyle: ParStyle,
-                      fontSize: 16,
-                      color: const Color(0xFF00ff00)
+              // Text Field
+               Positioned(
+                  child: Align(
+                      alignment: Alignment(0, -0.30),
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(85, 0, 95, 30),
+                        child: DropdownButton(
+                          // value: selectedYear,
+                          // underline: Text("Select Year",style: TextStyle(fontSize: 16),),
+                          hint: selectedYear != "" ? Text("$selectedYear",style: TextStyle(fontSize: 16,color: Colors.black)) : Text('Select year',style: TextStyle(fontSize: 16,color: Colors.black),),
+                          isExpanded: true,
+                          iconEnabledColor: Color(0xFF00ff00),
+                          style: TextStyle(color: Colors.black, fontSize: 16),
+                          dropdownColor: Color(0xFF00ff00),
+                          focusColor: Colors.black,
+                          icon: Icon(Icons.keyboard_arrow_down),
+                          items: years.map((String items) {
+                            return DropdownMenuItem(
+                                value: items, child: Text(items));
+                          }).toList(),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              selectedYear = newValue!;
+                            });
+                          },
+                        ),
+
+
+
+
+                        // DropdownButton(
+                        //   items: years.map((String items) {
+                        //     return DropdownMenuItem(
+                        //       value: items,
+                        //       child: Text(items),
+                        //     );
+                        //   }).toList(),
+                        //
+                        //   onChanged: (val){
+                        //     setState(() {
+                        //       selectedYear = val.toString();
+                        //     });
+                        //   },
+                        // )
+                        // TextField(
+                        //     controller: yearController,
+                        //     style: TextStyle(fontSize: 18),
+                        //     keyboardType: TextInputType.name,
+                        //     decoration: InputDecoration(
+                        //         contentPadding: EdgeInsets.only(bottom: 4),
+                        //         isDense: true,
+                        //         hintText: "Undergrad Second Year"
+                        //     )),
+                      )
                   )
               ),
-            ),
 
-            Expanded(child: Container()),
 
-            // Continue Button
-            ElevatedButton(
-                child: Text("Continue", style: GoogleFonts.roboto(
-                    textStyle: buttonText
-                )
+              // Text
+              Positioned(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 70,right:100),
+                  child: Align(
+                    alignment: const Alignment(0.0, -0.20),
+                    child: Text('Your program will be shown',
+                        style: GoogleFonts.roboto (
+                            textStyle: ParStyle,
+                            fontSize: 16,
+                            color: const Color(0xFF00ff00)
+                        )
+                    ),
+                  ),
                 ),
-                style: ElevatedButton.styleFrom(
-                    primary: const Color(0xFF00ff00),
-                    minimumSize: const Size(320, 50),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25)
-                    )
-                ),
-                onPressed: () {
-                  print('This is selected value $selectedYear');
-                  buyerData.changeYearr = selectedYear;
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const CarDetailsBuyer()),
-                );
-                }
-            ),
-            SizedBox(
-              height: size.height * 0.05,
-            ),
+              ),
 
-          ],
-        ),
-      ),
+
+
+              // Continue Button
+              Positioned(
+                  top: 660,
+                  child: ElevatedButton(
+                      child: Text("Continue", style: GoogleFonts.roboto(
+                          textStyle: buttonText
+                      )
+                      ),
+                      style: ElevatedButton.styleFrom(
+                          primary: const Color(0xFF00ff00),
+                          minimumSize: const Size(320, 50),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)
+                          )
+                      ),
+                      onPressed: () {
+                        print('This is selected value $selectedYear');
+                        buyerData.changeYearr = selectedYear;
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const CarDetailsBuyer()),
+                      );
+                      }
+                  )
+              ),
+
+
+            ],
+          ),
+        )
     );
   }
 

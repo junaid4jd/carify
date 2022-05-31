@@ -45,185 +45,171 @@ class _FeaturesSellerState extends State<FeaturesSeller> {
 
 
 
-          child: Column(
-             // alignment: Alignment.center,
+          child: Stack(
+              alignment: Alignment.center,
               children: <Widget>[
-                // Container(
-                //   height: 800,
-                // ),
-
-
-                SizedBox(
-                  height: size.height * 0.05,
-                ),
                 Container(
-                  width: size.width * 0.9,
-                  child: Row(
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.arrow_back_ios_rounded),
-                        color: Color(0xFF00ff00),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const CarDetailsSeller())
-                          );
-                        },
-                      ),
-                    ],
-                  ),
+                  height: 800,
                 ),
-                SizedBox(
-                  height: size.height * 0.05,
+
+
+                // Back Arrow
+                Positioned(
+                  top: 105,
+                  right: 340,
+                  child: IconButton(
+                    icon: const Icon(Icons.arrow_back_ios_rounded),
+                    color: const Color(0xFF00ff00),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const CarDetailsSeller())
+                      );
+                    },
+                  ),
                 ),
 
 
                 // Screen Title Text
-                Padding(
-                  padding: const EdgeInsets.only(left: 50, right: 50),
-                  child: Align(
-                    alignment: const Alignment(0.0, -0.6),
-                    child: Text(
-                      'Included\n features',
-                      style: GoogleFonts.roboto(
-                        textStyle: titles,
-                        fontSize: 44,
+                Positioned(
+                  top: 145,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 50, right: 50),
+                    child: Align(
+                      alignment: const Alignment(0.0, -0.6),
+                      child: Text(
+                        'Included\n features',
+                        style: GoogleFonts.roboto(
+                          textStyle: titles,
+                          fontSize: 44,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),
 
-                SizedBox(
-                  height: size.height * 0.03,
-                ),
+
                 // # of bedrooms
-                Padding(
-                  padding: const EdgeInsets.only(left: 50, right: 50),
-                  child: Align(
-                    alignment: const Alignment(0.0, -0.6),
-                    child: Text('Let us know what features are included\n in your car. Selected features will\n be shown as included with your car',
-                      style: GoogleFonts.roboto(
-                        textStyle: smallText,
+                Positioned(
+                  top: 260,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 50, right: 50),
+                    child: Align(
+                      alignment: const Alignment(0.0, -0.6),
+                      child: Text('Let us know what features are included\n in your car. Selected features will\n be shown as included with your car',
+                        style: GoogleFonts.roboto(
+                          textStyle: smallText,
 
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: size.height * 0.05,
-                ),
 
-                Container(
-                  height: size.height*0.07,
-                  width: size.width*0.9,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      customCheckbox(
-                        text: "Push to start",
-                      ),
-
-                      // Check Parking
-                      customCheckbox(
-                        text: "Wifi",
-                      ),
-                    ],
-                  ),
-                ),
                 // Check Utilities
-
-                SizedBox(
-                  height: size.height * 0.015,
-                ),
-
-                Container(
-                  height: size.height*0.07,
-                  width: size.width*0.9,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      customCheckbox(
-                        text: "bluetooth",
-                      ),
-
-                      // Check Laundry
-                      customCheckbox(
-                        text: "touch screen",
-                      ),
-                    ],
+                Positioned(
+                  top: 340,
+                  left:30,
+                  child: customCheckbox(
+                    text: "Push to start",
                   ),
+
                 ),
-                SizedBox(
-                  height: size.height * 0.015,
+
+                // Check Parking
+                Positioned(
+                  top: 340,
+                  right:30,
+                  child: customCheckbox(
+                    text: "Wifi",
+                  ),
+
                 ),
+
                 // Check Internet
-                Container(
-                  height: size.height*0.07,
-                  width: size.width*0.9,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      customCheckbox(
-                        text: "mini-fridge",
-                      ),
-
-                      // Check Furniture
-                      customCheckbox(
-                        text: "A/C",
-                      ),
-
-                    ],
+                Positioned(
+                  top: 400,
+                  left:30,
+                  child: customCheckbox(
+                    text: "bluetooth",
                   ),
+
                 ),
-                SizedBox(
-                  height: size.height * 0.015,
+
+                // Check Laundry
+                Positioned(
+                  top: 400,
+                  right:30,
+                  child: customCheckbox(
+                    text: "touch screen",
+                  ),
+
                 ),
+
                 // Check Microwave
+                Positioned(
+                  top: 460,
+                  left:30,
+                  child: customCheckbox(
+                    text: "mini-fridge",
+                  ),
+
+                ),
+
+                // Check Furniture
+                Positioned(
+                  top: 460,
+                  right:30,
+                  child: customCheckbox(
+                    text: "A/C",
+                  ),
+
+                ),
 
                 // Check A/C
-                Container(
-                  height: size.height*0.07,
-                  width: size.width*0.9,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      customCheckbox(
-                        text: "TV",
-                      ),
-
-                      // Check Dishwasher
-                      customCheckbox(
-                        text: "Leather Seats",
-                      ),
-
-
-                    ],
+                Positioned(
+                  top: 520,
+                  left:30,
+                  child: customCheckbox(
+                    text: "TV",
                   ),
+
                 ),
 
-                SizedBox(
-                  height: size.height * 0.05,
+                // Check Dishwasher
+                Positioned(
+                  top: 520,
+                  right:30,
+                  child: customCheckbox(
+                    text: "Leather Seats",
+                  ),
+
                 ),
+
+
                 // Continue Button
-                ElevatedButton(
-                    child: Text("Continue", style: GoogleFonts.roboto(
-                        textStyle: buttonText
-                    ),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                        primary: const Color(0xFF00ff00),
-                        minimumSize: const Size(320, 50),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25)
-                        )
-                    ),
-                    onPressed: () { Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const AddCars()),
-                    );
-                    }
+                Positioned(
+                    top: 745,
+                    child: ElevatedButton(
+                        child: Text("Continue", style: GoogleFonts.roboto(
+                            textStyle: buttonText
+                        ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            primary: const Color(0xFF00ff00),
+                            minimumSize: const Size(320, 50),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25)
+                            )
+                        ),
+                        onPressed: () { Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const AddCars()),
+                        );
+                        }
+                    )
                 ),
 
 

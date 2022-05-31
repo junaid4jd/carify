@@ -17,8 +17,11 @@ enum MobileVerificationState {
 }
 
 class SignUpNumberTenant extends StatefulWidget {
-  SignUpNumberTenant({Key? key, required this.userType}) : super(key: key);
-  String userType;
+  SignUpNumberTenant({
+    Key? key,
+    required this.userType
+  }) : super(key: key);
+String userType;
   @override
   _SignUpNumberTenant createState() => _SignUpNumberTenant();
 }
@@ -36,193 +39,170 @@ class _SignUpNumberTenant extends State<SignUpNumberTenant> {
 
   // Text Style
   final ParStyle = const TextStyle(fontSize: 13, color: Colors.black);
-  final titles = const TextStyle(
-      fontSize: 37, fontWeight: FontWeight.bold, color: Colors.black);
-  final buttonText = const TextStyle(
-      fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white);
+  final titles = const TextStyle(fontSize: 37, fontWeight: FontWeight.bold, color: Colors.black);
+  final buttonText = const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white);
 
   @override
   Widget build(BuildContext context) {
-    Size size =
-        MediaQuery.of(context).size; //provides total height and width of scr
+    Size size = MediaQuery.of(context).size; //provides total height and width of scr
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
-      body: Column(
-        //  alignment: Alignment.center,
+      body: Stack(
+        alignment: Alignment.center,
         children: <Widget>[
-          SizedBox(
-            height: size.height * 0.05,
-          ),
-          Container(
-            width: size.width * 0.9,
-            child: Row(
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.arrow_back_ios_rounded),
-                  color: Color(0xFF00ff00),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => SignInUpScreen(
-                    //               usertype: 'dummy',
-                    //             )));
-                  },
-                ),
-              ],
+          // Back Arrow
+          Positioned(
+            top: 75,
+            right: 345,
+            child: IconButton(
+              icon: const Icon(Icons.arrow_back_ios_rounded),
+              color: const Color(0xFF00ff00),
+              onPressed: () {
+                Navigator.pop(
+                  context,
+                );
+              },
             ),
           ),
 
-          SizedBox(height: size.height * 0.01),
-
           //Screen Title Text
-          Align(
-            // alignment: const Alignment(0, -0.79),
-            child: Text('My Number is',
-                style: GoogleFonts.roboto(
-                  textStyle: titles,
-                )),
+          Positioned(
+            child: Align(
+              alignment: const Alignment(0, -0.79),
+              child: Text('My Number is',
+                  style: GoogleFonts.roboto(
+                    textStyle: titles,
+                  )),
+            ),
           ),
 
           //Text
-          Padding(
-            padding: const EdgeInsets.fromLTRB(50.0, 0, 50.0, 0),
-            child: Align(
-                alignment: const Alignment(0, -0.30),
-                child: Container(
-                    margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                    child: Text(
-                      'When you tap “Continue”, Carify will send a text with verification code. '
-                      'Message and data rates may apply. '
-                      'The verified phone number can be used to log in. '
-                      'Learn what happens when your number changes.',
-                      style: GoogleFonts.roboto(
-                        textStyle: ParStyle,
-                      ),
-                      textScaleFactor: 1.2,
-                      textAlign: TextAlign.justify,
-                    ))),
+          Positioned(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(50.0, 0, 50.0, 0),
+              child: Align(
+                  alignment: const Alignment(0, -0.30),
+                  child: Container(
+                      margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                      child: Text(
+                        'When you tap “Continue”, Carify will send a text with verification code. '
+                        'Message and data rates may apply. '
+                        'The verified phone number can be used to log in. '
+                        'Learn what happens when your number changes.',
+                        style: GoogleFonts.roboto(
+                          textStyle: ParStyle,
+                        ),
+                        textScaleFactor: 1.2,
+                        textAlign: TextAlign.justify,
+                      ))),
+            ),
           ),
 
           // Phone Number Input
-          SizedBox(height: size.height * 0.01),
-          Form(
-              child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                  child: Align(
-                    alignment: const Alignment(0, -0.55),
-                    child: InternationalPhoneNumberInput(
-                      onInputChanged: (PhoneNumber number) {
-                        if (kDebugMode) {
-                          phoneNum = number.phoneNumber.toString();
-                          print(phoneNum);
-                        }
-                      },
-                      textFieldController: numberController,
-                      ignoreBlank: false,
-                      autoValidateMode: AutovalidateMode.disabled,
-                      selectorTextStyle: const TextStyle(color: Colors.black),
-                      initialValue: PhoneNumber(isoCode: 'PK'),
-                      formatInput: false,
-                      maxLength: 10,
-                      keyboardType: TextInputType.phone,
-                      inputDecoration: const InputDecoration(
-                        contentPadding: EdgeInsets.only(left: 0.0),
-                        hintText: '+1 354 112 2376',
-                        isDense: true,
+          Positioned(
+              child: Form(
+                  child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
+                      child: Align(
+                        alignment: const Alignment(0, -0.55),
+                        child: InternationalPhoneNumberInput(
+                          onInputChanged: (PhoneNumber number) {
+                            if (kDebugMode) {
+                              phoneNum = number.phoneNumber.toString();
+                              print(phoneNum);
+                            }
+                          },
+                          textFieldController: numberController,
+                          ignoreBlank: false,
+                          autoValidateMode: AutovalidateMode.disabled,
+                          selectorTextStyle: const TextStyle(color: Colors.black),
+                          initialValue: PhoneNumber(isoCode: 'PK'),
+                          formatInput: false,
+                          maxLength: 10,
+                          keyboardType: TextInputType.phone,
+                          inputDecoration: const InputDecoration(
+                            contentPadding: EdgeInsets.only(left: 0.0),
+                            hintText: '+1 354 112 2376',
+                            isDense: true,
 
-                        ///added
-                      ),
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter phone number';
-                        }
-                        return null;
-                      },
-                      spaceBetweenSelectorAndTextField: 0,
-                    ),
-                  ))),
+                            ///added
+                          ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Please enter phone number';
+                            }
+                            return null;
+                          },
+                          spaceBetweenSelectorAndTextField: 0,
+                        ),
+                      )))),
 
-          SizedBox(height: size.height * 0.03),
           //Continue Button
-          ElevatedButton(
-              child: Text("Continue",
-                  style: GoogleFonts.roboto(textStyle: buttonText)),
-              style: ElevatedButton.styleFrom(
-                  primary: const Color(0xFF00ff00),
-                  minimumSize: Size(
-                    size.width * 0.9,
-                    size.height * 0.075,
-                  ),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25))),
-              onPressed: () async {
-                print('This is mobile number: ${phoneNum}');
-                if (await GeneralUtilities.checkInternetConnection() != null) {
-                  EasyLoading.show();
-                  await auth
-                      .verifyPhoneNumber(phoneNum, context)
-                      .then((value) async {
-                    EasyLoading.dismiss();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => OTPCode(
-                                phone: phoneNum,
-                                userType: widget.userType,
-                              )),
-                    );
-                  });
-                } else {
-                  Fluttertoast.showToast(msg: 'Please check internet');
-                }
+          Positioned(
+              top: 440,
+              child: ElevatedButton(
+                  child: Text("Continue", style: GoogleFonts.roboto(textStyle: buttonText)),
+                  style: ElevatedButton.styleFrom(
+                      primary: const Color(0xFF00ff00),
+                      minimumSize: const Size(320, 50),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25))),
+                  onPressed: () async {
+                    print('This is mobile number: ${phoneNum}');
+                    if (await GeneralUtilities.checkInternetConnection() != null) {
+                      EasyLoading.show();
+                      await auth.verifyPhoneNumber(phoneNum, context).then((value) async {
+                        EasyLoading.dismiss();
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => OTPCode(phone: phoneNum,userType: widget.userType,)),
+                        );
+                      });
+                    } else {
+                      Fluttertoast.showToast(msg: 'Please check internet');
+                    }
 
-                // whenComplete(() {
-                //   // Navigator.push(context, MaterialPageRoute(builder: (context) => OTPCode(phone: phoneNum)),);
-                // });
-                // FirebaseAuth auth = FirebaseAuth.instance;
-                //
-                // await FirebaseAuth.instance.verifyPhoneNumber(
-                //   phoneNumber: phoneNum,
-                //   verificationCompleted: (PhoneAuthCredential credential) async {
-                //     await auth.signInWithCredential(credential);
-                //
-                //
-                //   },
-                //
-                //   verificationFailed: (FirebaseAuthException e) {
-                //     if (e.code == 'invalid-phone_number') {
-                //       print('The provided phone number is not valid');
-                //     }
-                //   },
-                //   codeSent: (String verificationId, int? resendToken) async{
-                //     String smsCode = '3343';
-                //
-                //     PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: smsCode);
-                //     await auth.signInWithCredential(credential);
-                //
-                //   },
-                //   codeAutoRetrievalTimeout: (String verificationId) {
-                //     print('gerb alert');
-                //   },
-                // );
+                    // whenComplete(() {
+                    //   // Navigator.push(context, MaterialPageRoute(builder: (context) => OTPCode(phone: phoneNum)),);
+                    // });
+                    // FirebaseAuth auth = FirebaseAuth.instance;
+                    //
+                    // await FirebaseAuth.instance.verifyPhoneNumber(
+                    //   phoneNumber: phoneNum,
+                    //   verificationCompleted: (PhoneAuthCredential credential) async {
+                    //     await auth.signInWithCredential(credential);
+                    //
+                    //
+                    //   },
+                    //
+                    //   verificationFailed: (FirebaseAuthException e) {
+                    //     if (e.code == 'invalid-phone_number') {
+                    //       print('The provided phone number is not valid');
+                    //     }
+                    //   },
+                    //   codeSent: (String verificationId, int? resendToken) async{
+                    //     String smsCode = '3343';
+                    //
+                    //     PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: smsCode);
+                    //     await auth.signInWithCredential(credential);
+                    //
+                    //   },
+                    //   codeAutoRetrievalTimeout: (String verificationId) {
+                    //     print('gerb alert');
+                    //   },
+                    // );
 
-                // await auth.verifyPhoneNumber(
-                //   phoneNumber: '+44 7123 123 456',
-                //   verificationCompleted: (PhoneAuthCredential credential) async {
-                //     // ANDROID ONLY!
-                //
-                //     // Sign the user in (or link) with the auto-generated credential
-                //     await auth.signInWithCredential(credential);
-                //   }, verificationFailed: (FirebaseAuthException error) {  },
-                //   codeAutoRetrievalTimeout: (String verificationId) {  },
-                //
-                //   codeSent: (String verificationId, int? forceResendingToken )
-                //   async{String smsCode = '9893';},
-                // );
-              })
+                    // await auth.verifyPhoneNumber(
+                    //   phoneNumber: '+44 7123 123 456',
+                    //   verificationCompleted: (PhoneAuthCredential credential) async {
+                    //     // ANDROID ONLY!
+                    //
+                    //     // Sign the user in (or link) with the auto-generated credential
+                    //     await auth.signInWithCredential(credential);
+                    //   }, verificationFailed: (FirebaseAuthException error) {  },
+                    //   codeAutoRetrievalTimeout: (String verificationId) {  },
+                    //
+                    //   codeSent: (String verificationId, int? forceResendingToken )
+                    //   async{String smsCode = '9893';},
+                    // );
+                  }))
         ],
       ),
     );

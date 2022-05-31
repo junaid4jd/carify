@@ -31,148 +31,152 @@ class Background extends StatelessWidget {
     Size size = MediaQuery
         .of(context)
         .size; //provides total height and width of screen for users
-    return Scaffold(
-      backgroundColor: Colors.white,
-
-      body: SizedBox(
+    return SizedBox(
         height: size.height,
         width: double.infinity,
-        child: Column(
-         // alignment: Alignment.center,
-          children: <Widget>[
+        child: Scaffold(
+          backgroundColor: Colors.white,
 
-            SizedBox(
-              height: size.height * 0.05,
-            ),
-            Container(
-              width: size.width * 0.9,
-              child: Row(
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.arrow_back_ios_rounded),
-                    color: Color(0xFF00ff00),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => BirthdayScreenSeller()
+          body: Stack(
+            alignment: Alignment.center,
+            children: <Widget>[
 
-                          ));
-                    },
-                  ),
-                ],
+
+
+              // Back arrow
+              Positioned(
+                top: 105,
+                right: 340,
+                child: IconButton(
+                  icon: const Icon(Icons.arrow_back_ios_rounded),
+                  color: const Color(0xFF00ff00),
+                  onPressed: () {
+
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const BirthdayScreenSeller())
+                    );
+                  },
+                ),
               ),
-            ),
 
-            SizedBox(height: size.height * 0.05),
 
-            // Back arrow
 
-            // Screen title
-            Align(
-              alignment: const Alignment(0.10, -0.6),
-              child: Text('My gender is',
-                  style: GoogleFonts.roboto (
-                    textStyle: titles,
-                      fontSize: 44
+              // Screen title
+              Positioned(
+                child: Align(
+                  alignment: const Alignment(0.10, -0.6),
+                  child: Text('My gender is',
+                      style: GoogleFonts.roboto (
+                        textStyle: titles,
+                          fontSize: 44
+                      )
+                  ),
+                ),
+              ),
+
+
+
+              // Female Button
+              Positioned(
+                  top: 260,
+                  child: SizedBox(
+                      height: 54,
+                      width: 330,
+                      child: TextButton(
+                          child: Text("Female".toUpperCase(),  style: GoogleFonts.roboto (
+                            textStyle: buttonText,
+                          )
+                          ),
+                          style: ButtonStyle(
+                              padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(15)),
+                              foregroundColor: MaterialStateProperty.all<Color>(Color(0xFF00ff00)),
+                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(28.0),
+                                      side: const BorderSide(color: Colors.grey, width: 3)
+                                  )
+                              )
+                          ),
+                          onPressed: () {
+                            sellerVM.changeGender = 'Female';
+                            const BorderSide(color: Color(0xFF00ff00));
+                            Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => const AddressScreenSeller()),
+                            );
+                          }
+                      )
                   )
               ),
-            ),
 
 
-            SizedBox(height: size.height * 0.08),
-            // Female Button
-            SizedBox(
-                height: size.height*0.075,
-                width: size.width*0.9,
-                child: TextButton(
-                    child: Text("Female".toUpperCase(),  style: GoogleFonts.roboto (
-                      textStyle: buttonText,
-                    )
-                    ),
-                    style: ButtonStyle(
-                        padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(15)),
-                        foregroundColor: MaterialStateProperty.all<Color>(Color(0xFF00ff00)),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(28.0),
-                                side: const BorderSide(color: Colors.grey, width: 3)
-                            )
-                        )
-                    ),
-                    onPressed: () {
-                      sellerVM.changeGender = 'Female';
-                      const BorderSide(color: Color(0xFF00ff00));
-                      Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const AddressScreenSeller()),
-                      );
-                    }
-                )
-            ),
-            SizedBox(height: size.height * 0.05),
-
-            // Male Button
-            SizedBox(
-                height: size.height*0.075,
-                width: size.width*0.9,
-                child: TextButton(
-                    child: Text("Male".toUpperCase(),  style: GoogleFonts.roboto (
-                      textStyle: buttonText,
-                    )
-                    ),
-                    style: ButtonStyle(
-                        padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(15)),
-                        foregroundColor: MaterialStateProperty.all<Color>(Color(0xFF00ff00)),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(28.0),
-                                side: const BorderSide(color: Colors.grey, width: 3)
-                            )
-                        )
-                    ),
-                    onPressed: () {
-                      sellerVM.changeGender = 'Male';
-                      Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const AddressScreenSeller()),
-                      );
-                    }
-                )
-            ),
-
-            SizedBox(height: size.height * 0.05),
-            // Other Button
-            SizedBox(
-                height: size.height*0.075,
-                width: size.width*0.9,
-                child: TextButton(
-                    child: Text("Other".toUpperCase(),  style: GoogleFonts.roboto (
-                      textStyle: buttonText,
-                    )
-                    ),
-                    style: ButtonStyle(
-                        padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(15)),
-                        foregroundColor: MaterialStateProperty.all<Color>(Color(0xFF00ff00)),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(28.0),
-                                side: const BorderSide(color: Colors.grey, width: 3)
-                            )
-                        )
-                    ),
-                    onPressed: () {
-                      sellerVM.changeGender = 'Other';
-                      Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const AddressScreenSeller()),
-                      );
-                    }
-                )
-            ),
+              // Male Button
+              Positioned(
+                  top: 360,
+                  child: SizedBox(
+                      height: 54,
+                      width: 330,
+                      child: TextButton(
+                          child: Text("Male".toUpperCase(),  style: GoogleFonts.roboto (
+                            textStyle: buttonText,
+                          )
+                          ),
+                          style: ButtonStyle(
+                              padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(15)),
+                              foregroundColor: MaterialStateProperty.all<Color>(Color(0xFF00ff00)),
+                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(28.0),
+                                      side: const BorderSide(color: Colors.grey, width: 3)
+                                  )
+                              )
+                          ),
+                          onPressed: () {
+                            sellerVM.changeGender = 'Male';
+                            Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => const AddressScreenSeller()),
+                            );
+                          }
+                      )
+                  )
+              ),
 
 
-          ],
-        ),
-      ),
+              // Other Button
+              Positioned(
+                  top: 460,
+                  child: SizedBox(
+                      height: 54,
+                      width: 330,
+                      child: TextButton(
+                          child: Text("Other".toUpperCase(),  style: GoogleFonts.roboto (
+                            textStyle: buttonText,
+                          )
+                          ),
+                          style: ButtonStyle(
+                              padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(15)),
+                              foregroundColor: MaterialStateProperty.all<Color>(Color(0xFF00ff00)),
+                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(28.0),
+                                      side: const BorderSide(color: Colors.grey, width: 3)
+                                  )
+                              )
+                          ),
+                          onPressed: () {
+                            sellerVM.changeGender = 'Other';
+                            Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => const AddressScreenSeller()),
+                            );
+                          }
+                      )
+                  )
+              ),
+
+
+            ],
+          ),
+        )
     );
   }
 }

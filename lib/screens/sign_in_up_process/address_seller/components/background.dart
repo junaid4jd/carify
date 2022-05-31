@@ -93,126 +93,118 @@ class _BackgroundState extends State<Background> {
   Widget build(BuildContext context) {
     var sellerVM = Provider.of<SellerProvider>(context, listen: false);
     Size size = MediaQuery.of(context).size; //provides total height and width of screen for users
-    return Scaffold(
-      backgroundColor: Colors.white,
-      resizeToAvoidBottomInset: false,
-      body: SizedBox(
+    return SizedBox(
         height: size.height,
         width: double.infinity,
-        child: Column(
-          //alignment: Alignment.center,
-          children: <Widget>[
-
-            SizedBox(
-              height: size.height * 0.05,
-            ),
-            Container(
-              width: size.width * 0.9,
-              child: Row(
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.arrow_back_ios_rounded),
-                    color: Color(0xFF00ff00),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                              GenderScreenSeller()
-                          ));
-                    },
-                  ),
-                ],
-              ),
-            ),
-
-            SizedBox(height: size.height * 0.05),
-            // Back arrow
-
-            // Screen title
-            Align(
-              alignment: const Alignment(0.0, -0.6),
-              child: Text(
-                'My address is',
-                style: GoogleFonts.roboto(
-                  textStyle: titles,
-                  fontSize: 44,
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          body: Stack(
+            alignment: Alignment.center,
+            children: <Widget>[
+              // Back arrow
+              Positioned(
+                top: 105,
+                right: 340,
+                child: IconButton(
+                  icon: const Icon(Icons.arrow_back_ios_rounded),
+                  color: const Color(0xFF00ff00),
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const GenderScreenSeller()));
+                  },
                 ),
-                textAlign: TextAlign.center,
               ),
-            ),
-            SizedBox(height: size.height * 0.05),
-            // Text Field
-            Align(
-                alignment: Alignment(0, -0.30),
+
+              // Screen title
+              Positioned(
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(70, 0, 70, 0),
-                  child: TextField(
-                      controller: _controller,
-                      onChanged: (value){
-                        if(value.isEmpty){
-                          setState(() {
-                            showSuggestion=true;
-                          });
-                        }
+                  padding: const EdgeInsets.only(left: 50, right: 50),
+                  child: Align(
+                    alignment: const Alignment(0.0, -0.6),
+                    child: Text(
+                      'My address is',
+                      style: GoogleFonts.roboto(
+                        textStyle: titles,
+                        fontSize: 44,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ),
+
+              // Text Field
+              Positioned(
+                  child: Align(
+                      alignment: Alignment(0, -0.30),
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(70, 0, 70, 0),
+                        child: TextField(
+                            controller: _controller,
+                            onChanged: (value){
+                              if(value.isEmpty){
+                                setState(() {
+                                  showSuggestion=true;
+                                });
+                              }
+                            },
+                            style: TextStyle(fontSize: 18),
+                            keyboardType: TextInputType.name,
+                            decoration: InputDecoration(
+                                contentPadding: EdgeInsets.only(bottom: 4), isDense: true, hintText: "534 yonge St")),
+                      ))),
+
+              // Text
+              Positioned(
+                child: Align(
+                  alignment: const Alignment(-0.43, -0.20),
+                  child: Text('buyers will see this',
+                      style: GoogleFonts.roboto(textStyle: parStyle, fontSize: 16, color: const Color(0xFF757575))),
+                ),
+              ),
+              Container(
+                height: 80,
+                width: 250,
+                // color: Colors.grey[100],
+                child: showSuggestion ==true ? ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: _placeList.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () async {
+                        setState(() {
+                          _controller.text = _placeList[index]["description"];
+                          showSuggestion = false;
+                          _placeList.clear();
+                        });
+
                       },
-                      style: TextStyle(fontSize: 18),
-                      keyboardType: TextInputType.name,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(bottom: 4), isDense: true, hintText: "534 yonge St")),
-                )),
-            SizedBox(height: size.height * 0.02),
-            // Text
-            Align(
-              alignment: const Alignment(-0.43, -0.20),
-              child: Text('buyers will see this',
-                  style: GoogleFonts.roboto(textStyle: parStyle, fontSize: 16, color: const Color(0xFF757575))),
-            ),
-            // Container(
-            //   height: 55,
-            //   width: 250,
-            //   // color: Colors.grey[100],
-            //   child: showSuggestion ==true ? ListView.builder(
-            //     physics: NeverScrollableScrollPhysics(),
-            //     shrinkWrap: true,
-            //     itemCount: _placeList.length,
-            //     itemBuilder: (context, index) {
-            //       return GestureDetector(
-            //         onTap: () async {
-            //           setState(() {
-            //             _controller.text = _placeList[index]["description"];
-            //             showSuggestion = false;
-            //             _placeList.clear();
-            //           });
-            //
-            //         },
-            //         child: ListTile(
-            //           title: Text(_placeList[index]["description"]),
-            //         ),
-            //       );
-            //     },
-            //   ) : SizedBox(),
-            // ),
-            Expanded(child: Container()),
-            // Continue button
-            ElevatedButton(
-                child: Text("Continue", style: GoogleFonts.roboto(textStyle: buttonText)),
-                style: ElevatedButton.styleFrom(
-                    primary: const Color(0xFF00ff00),
-                    minimumSize: const Size(320, 50),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25))),
-                onPressed: () {
-                  sellerVM.changeAddress = _controller.text;
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const CarDetailsSeller()),
-                  );
-                }),
-            SizedBox(height: size.height * 0.05),
-          ],
-        ),
-      ),
-    );
+                      child: ListTile(
+                        title: Text(_placeList[index]["description"]),
+                      ),
+                    );
+                  },
+                ) : SizedBox(),
+              ),
+
+              // Continue button
+              Positioned(
+                  top: 660,
+                  child: ElevatedButton(
+                      child: Text("Continue", style: GoogleFonts.roboto(textStyle: buttonText)),
+                      style: ElevatedButton.styleFrom(
+                          primary: const Color(0xFF00ff00),
+                          minimumSize: const Size(320, 50),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25))),
+                      onPressed: () {
+                        sellerVM.changeAddress = _controller.text;
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const CarDetailsSeller()),
+                        );
+                      })),
+            ],
+          ),
+        ));
   }
 }

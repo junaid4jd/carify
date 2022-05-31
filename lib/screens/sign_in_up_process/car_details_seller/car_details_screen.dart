@@ -65,216 +65,146 @@ class _CarDetailsSeller extends State<CarDetailsSeller> {
 
       body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          child: Column(
+          child: Stack(
 
-            //  alignment: Alignment.center,
+              alignment: Alignment.center,
               children: <Widget>[
-
-                SizedBox(
-                  height: size.height * 0.05,
-                ),
                 Container(
-                  width: size.width * 0.9,
-                  child: Row(
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.arrow_back_ios_rounded),
-                        color: Color(0xFF00ff00),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const AddressScreenSeller())
-                          );
-                        },
-                      ),
-                    ],
+                  height: 800,
+                ),
+
+
+
+
+                // Back Arrow
+                Positioned(
+                  top: 105,
+                  right: 340,
+                  child: IconButton(
+                    icon: const Icon(Icons.arrow_back_ios_rounded),
+                    color: const Color(0xFF00ff00),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const AddressScreenSeller())
+                      );
+                    },
                   ),
                 ),
+
+
                 // Screen title
-                Padding(
-                  padding: const EdgeInsets.only(left: 50, right: 50),
-                  child: Align(
-                    alignment: const Alignment(0.0, -0.6),
-                    child: Text(
-                      'Car Details',
-                      style: GoogleFonts.roboto(
-                        textStyle: titles,
-                        fontSize: 44,
+                Positioned(
+                  top: 145,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 50, right: 50),
+                    child: Align(
+                      alignment: const Alignment(0.0, -0.6),
+                      child: Text(
+                        'Car Details',
+                        style: GoogleFonts.roboto(
+                          textStyle: titles,
+                          fontSize: 44,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),
+
+
                 // # of bedrooms
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    height: 96.67,
-                    width: 370,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: const Color(0xFF424242),
-                        ),
-                        borderRadius: const BorderRadius.all(Radius.circular(15))),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 15),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10, right: 10),
-                            child: SizedBox(
-                              height: 20,
+                Positioned(
+                    top: 210,
+                    child: Container(
+                      height: 96.67,
+                      width: 370,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            color: const Color(0xFF424242),
+                          ),
+                          borderRadius: const BorderRadius.all(Radius.circular(15))),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10, right: 10),
+                              child: SizedBox(
+                                height: 20,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                    "Distance Driven",
+                                    style: GoogleFonts.roboto(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18,
+                                        color: const Color(0xFF424242)
+                                    ),
+                                  ), const Spacer(), Text(
+                                    "30000 km",
+                                    style: GoogleFonts.roboto(
+                                        fontWeight: FontWeight.w400,
+                                        color: const Color(0xFF757575),
+                                        fontSize: 12
+                                    ),
+                                  )
+                                  ],
+                                ),
+                              ),
+                            ),
+
+                            SizedBox(
+                              height: 25,
+                              child: SliderTheme(
+                                data: SliderThemeData(
+                                  overlayShape: SliderComponentShape.noThumb,
+                                ),
+                                child: Slider(
+                                  value: numberOfBedrooms,
+                                  divisions: 10,
+                                  min: 1,
+                                  max: 10,
+                                  activeColor: const Color(0xFF00ff00),
+                                  onChanged: (value) =>
+                                      setState(() => numberOfBedrooms = value),
+                                ),),
+                            ),
+
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10, right: 10),
                               child: Row(
-                                children: [
-                                  Text(
-                                  "Distance Driven",
-                                  style: GoogleFonts.roboto(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 18,
-                                      color: const Color(0xFF424242)
-                                  ),
-                                ), const Spacer(), Text(
-                                  "30000 km",
+                                children: [Text(
+                                  "1 bedroom",
                                   style: GoogleFonts.roboto(
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xFF757575),
                                       fontSize: 12
                                   ),
-                                )
+                                ), const Spacer(),
+                                  Text(
+                                    "9+ bedrooms",
+                                    style: GoogleFonts.roboto(
+                                        fontWeight: FontWeight.w400,
+                                        color: const Color(0xFF757575),
+                                        fontSize: 12
+                                    ),
+                                  )
                                 ],
                               ),
                             ),
-                          ),
-
-                          SizedBox(
-                            height: 25,
-                            child: SliderTheme(
-                              data: SliderThemeData(
-                                overlayShape: SliderComponentShape.noThumb,
-                              ),
-                              child: Slider(
-                                value: numberOfBedrooms,
-                                divisions: 10,
-                                min: 1,
-                                max: 10,
-                                activeColor: const Color(0xFF00ff00),
-                                onChanged: (value) =>
-                                    setState(() => numberOfBedrooms = value),
-                              ),),
-                          ),
-
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10, right: 10),
-                            child: Row(
-                              children: [Text(
-                                "1 bedroom",
-                                style: GoogleFonts.roboto(
-                                    fontWeight: FontWeight.w400,
-                                    color: const Color(0xFF757575),
-                                    fontSize: 12
-                                ),
-                              ), const Spacer(),
-                                Text(
-                                  "9+ bedrooms",
-                                  style: GoogleFonts.roboto(
-                                      fontWeight: FontWeight.w400,
-                                      color: const Color(0xFF757575),
-                                      fontSize: 12
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ),
+                    )
                 ),
+
                 // $ range
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    height: 96.67,
-                    width: 370,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: const Color(0xFF424242),
-                        ),
-                        borderRadius: const BorderRadius.all(Radius.circular(15))),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 15,left:10,right:10),
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: 20,
-                            child: Row(
-                              children: [Text(
-                                "Price Range per Car",
-                                style: GoogleFonts.roboto(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 18,
-                                    color: const Color(0xFF424242)
-                                ),
-                              ), const Spacer(), Text(
-                                "\$6560-240033",
-                                style: GoogleFonts.roboto(
-                                    fontWeight: FontWeight.w400,
-                                    color: const Color(0xFF757575),
-                                    fontSize: 12
-                                ),
-                              )
-                              ],
-                            ),
-                          ),
+                Positioned(
+                    top: 320,
 
-                          SizedBox(
-                            height: 25,
-                            child: SliderTheme(
-                              data: SliderThemeData(
-                                overlayShape: SliderComponentShape.noThumb,
-                              ),
-                              child: RangeSlider(
-                                values: priceRange,
-                                divisions: 4001,
-                                min: 0,
-                                max: 4000,
-                                activeColor: const Color(0xFF00ff00),
-                                onChanged: (RangeValues values) {
-                                  setState(() {
-                                    priceRange = values;
-                                  });
-                                },
-                              ),),
-                          ),
-                          Row(
-                            children: [Text(
-                              "\$0",
-                              style: GoogleFonts.roboto(
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xFF757575),
-                                  fontSize: 12
-                              ),
-                            ), const Spacer(),
-                              Text(
-                                "\$40004",
-                                style: GoogleFonts.roboto(
-                                    fontWeight: FontWeight.w400,
-                                    color: const Color(0xFF757575),
-                                    fontSize: 12
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                // Sublet or no
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                      height: 85.67,
+                    child: Container(
+                      height: 96.67,
                       width: 370,
                       decoration: BoxDecoration(
                           border: Border.all(
@@ -282,185 +212,21 @@ class _CarDetailsSeller extends State<CarDetailsSeller> {
                           ),
                           borderRadius: const BorderRadius.all(Radius.circular(15))),
                       child: Padding(
-                          padding: const EdgeInsets.only(top: 15),
-                          child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 20, right: 10),
-                                  child: SizedBox(
-                                    height: 20,
-                                    child: Row(
-                                      children: [Text(
-                                        "Is this car a leaser?",
-                                        style: GoogleFonts.roboto(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 18,
-                                            color: const Color(0xFF424242)
-                                        ),
-                                      ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                    padding: const EdgeInsets.only(right: 45),
-
-                                    child: SizedBox(
-                                      child: Row(
-                                          children:  [
-                                            RadioItem(values: 1,itemName: 'Yes',group: carLeaserSelectedValue,onChange: (val){
-                                              print('Hello this is val $val');
-                                              setState(() {
-                                                carLeaserSelectedValue = val;
-                                                carLeaser = true;
-                                              });
-                                            }),
-                                            Divider(
-                                              height: 2,
-                                              thickness: 1,
-                                              color: Color(0xFFC4C4C4),
-                                            ),
-                                            Spacer(),
-
-                                            RadioItem(values: 2,itemName: 'No',group: carLeaserSelectedValue,onChange: (val){
-                                              print('Hello this is val $val');
-                                              setState(() {
-                                                carLeaserSelectedValue = val;
-                                                carLeaser = false;
-                                              });
-                                            }),
-                                            Divider(
-                                              height: 2,
-                                              thickness: 1,
-                                              color: Color(0xFFC4C4C4),
-                                            )
-
-
-
-                                          ]
-                                      ),
-                                    )
-                                )
-                              ]
-                          )
-                      )
-                  ),
-                ),
-                // Property Type
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                      height: 85.67,
-                      width: 370,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                            color: const Color(0xFF424242),
-                          ),
-                          borderRadius: const BorderRadius.all(Radius.circular(15))),
-                      child: Padding(
-                          padding: const EdgeInsets.only(top: 15),
-                          child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 20, right: 10),
-                                  child: SizedBox(
-                                    height: 20,
-                                    child: Row(
-                                      children: [Text(
-                                        "Car Type",
-                                        style: GoogleFonts.roboto(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 18,
-                                            color: const Color(0xFF424242)
-                                        ),
-                                      ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  child: Row(
-                                      children:  [
-                                        RadioItem(values: 3,itemName: 'SUV',group: carTypeSelectedValue,onChange: (val){
-                                          print('Hello this is val $val');
-                                          setState(() {
-                                            carTypeSelectedValue = val;
-                                            carType = 'SUV';
-                                          });
-                                        }),
-                                        Divider(
-                                          height: 2,
-                                          thickness: 0.5,
-                                          color: Color(0xFFC4C4C4),
-                                        ),
-
-
-                                        RadioItem(values: 4,itemName: 'Sedan',group: carTypeSelectedValue,onChange: (val){
-                                          print('Hello this is val $val');
-                                          setState(() {
-                                            carTypeSelectedValue = val;
-                                            carType = 'Sedan';
-                                          });
-                                        }),
-                                        Divider(
-                                          height: 2,
-                                          thickness: 0.5,
-                                          color: Color(0xFFC4C4C4),
-                                        ),
-
-                                        RadioItem(values: 5,itemName: 'Truck',group: carTypeSelectedValue,onChange: (val){
-                                          print('Hello this is val $val');
-                                          setState(() {
-                                            carTypeSelectedValue = val;
-                                            carType = 'Truck';
-                                          });
-                                        }),
-                                        Divider(
-                                          height: 2,
-                                          thickness: 0.5,
-                                          color: Color(0xFFC4C4C4),
-                                        )
-
-
-
-                                      ]
-                                  ),
-                                )
-                              ]
-                          )
-                      )
-                  ),
-                ),
-                // Duration of lease
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    height: 96.67,
-                    width: 370,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: const Color(0xFF424242),
-                        ),
-                        borderRadius: const BorderRadius.all(Radius.circular(15))),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 15),
-                      child: Column(
-                        children: [
-
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20, right: 10),
-                            child: SizedBox(
+                        padding: const EdgeInsets.only(top: 15,left:10,right:10),
+                        child: Column(
+                          children: [
+                            SizedBox(
                               height: 20,
                               child: Row(
                                 children: [Text(
-                                  "Duration of Lease",
+                                  "Price Range per Car",
                                   style: GoogleFonts.roboto(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 18,
                                       color: const Color(0xFF424242)
                                   ),
                                 ), const Spacer(), Text(
-                                  "3 months",
+                                  "\$6560-240033",
                                   style: GoogleFonts.roboto(
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xFF757575),
@@ -470,30 +236,29 @@ class _CarDetailsSeller extends State<CarDetailsSeller> {
                                 ],
                               ),
                             ),
-                          ),
 
-                          SizedBox(
-                            height: 25,
-                            child: SliderTheme(
-                              data: SliderThemeData(
-                                overlayShape: SliderComponentShape.noThumb,
-                              ),
-                              child: Slider(
-                                value: durationOfLease,
-                                divisions: 12,
-                                min: 1,
-                                max: 12,
-                                activeColor: const Color(0xFF00ff00),
-                                onChanged: (value) =>
-                                    setState(() => durationOfLease = value),
-                              ),),
-                          ),
-
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20, right: 10),
-                            child: Row(
+                            SizedBox(
+                              height: 25,
+                              child: SliderTheme(
+                                data: SliderThemeData(
+                                  overlayShape: SliderComponentShape.noThumb,
+                                ),
+                                child: RangeSlider(
+                                  values: priceRange,
+                                  divisions: 4001,
+                                  min: 0,
+                                  max: 4000,
+                                  activeColor: const Color(0xFF00ff00),
+                                  onChanged: (RangeValues values) {
+                                    setState(() {
+                                      priceRange = values;
+                                    });
+                                  },
+                                ),),
+                            ),
+                            Row(
                               children: [Text(
-                                "1 month",
+                                "\$0",
                                 style: GoogleFonts.roboto(
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xFF757575),
@@ -501,7 +266,7 @@ class _CarDetailsSeller extends State<CarDetailsSeller> {
                                 ),
                               ), const Spacer(),
                                 Text(
-                                  "12+ months",
+                                  "\$40004",
                                   style: GoogleFonts.roboto(
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xFF757575),
@@ -510,57 +275,305 @@ class _CarDetailsSeller extends State<CarDetailsSeller> {
                                 )
                               ],
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ),
+                    )
                 ),
 
-                SizedBox(
-                  height: size.height * 0.01,
-                ),
-                ElevatedButton(
-                    child: Text("Continue", style: GoogleFonts.roboto(
-                        textStyle: buttonText
-                    )
-                    ),
-                    style: ElevatedButton.styleFrom(
-                        primary: const Color(0xFF00ff00),
-                        minimumSize: const Size(320, 50),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25)
+                // Sublet or no
+                Positioned(
+                    top: 540,
+                    child: Container(
+                        height: 85.67,
+                        width: 370,
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                              color: const Color(0xFF424242),
+                            ),
+                            borderRadius: const BorderRadius.all(Radius.circular(15))),
+                        child: Padding(
+                            padding: const EdgeInsets.only(top: 15),
+                            child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 20, right: 10),
+                                    child: SizedBox(
+                                      height: 20,
+                                      child: Row(
+                                        children: [Text(
+                                          "Is this car a leaser?",
+                                          style: GoogleFonts.roboto(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 18,
+                                              color: const Color(0xFF424242)
+                                          ),
+                                        ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                      padding: const EdgeInsets.only(right: 45),
+
+                                      child: SizedBox(
+                                        child: Row(
+                                            children:  [
+                                              RadioItem(values: 1,itemName: 'Yes',group: carLeaserSelectedValue,onChange: (val){
+                                                print('Hello this is val $val');
+                                                setState(() {
+                                                  carLeaserSelectedValue = val;
+                                                  carLeaser = true;
+                                                });
+                                              }),
+                                              Divider(
+                                                height: 2,
+                                                thickness: 1,
+                                                color: Color(0xFFC4C4C4),
+                                              ),
+                                              Spacer(),
+
+                                              RadioItem(values: 2,itemName: 'No',group: carLeaserSelectedValue,onChange: (val){
+                                                print('Hello this is val $val');
+                                                setState(() {
+                                                  carLeaserSelectedValue = val;
+                                                  carLeaser = false;
+                                                });
+                                              }),
+                                              Divider(
+                                                height: 2,
+                                                thickness: 1,
+                                                color: Color(0xFFC4C4C4),
+                                              )
+
+
+
+                                            ]
+                                        ),
+                                      )
+                                  )
+                                ]
+                            )
                         )
-                    ),
-                    onPressed: () async {
-                      print('These are values $numberOfBedrooms ${priceRange.start} ${priceRange.end} $durationOfLease $carType $carLeaser' );
-                      sellerVm.changeDistanceDriven = numberOfBedrooms.toString();
-                      sellerVm.changePriceRangeStart = priceRange.start.toString();
-                      sellerVm.changePriceRangeEnd = priceRange.end.toString();
-                      sellerVm.changeLeaseDuration = durationOfLease.toString();
-                      sellerVm.changeLeaserCar = carLeaser.toString();
-                      sellerVm.changeCarType = carType.toString();
-                      if(await GeneralUtilities.checkInternetConnection() != null){
-                        try{
-                          await sellerVm.saveUser();
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const FeaturesSeller()),
-                          );
-                        }
-                        catch(e){
-                          Fluttertoast.showToast(msg: 'Something went wrong');
-                        }
-                      }
-                      else{
-                        Fluttertoast.showToast(msg: 'Please check internet');
-                      }
-                    // );
-                    }
+                    )
                 ),
-                SizedBox(
-                  height: size.height * 0.05,
+
+                // Property Type
+                Positioned(
+                    top: 640,
+                    child: Container(
+                        height: 85.67,
+                        width: 370,
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                              color: const Color(0xFF424242),
+                            ),
+                            borderRadius: const BorderRadius.all(Radius.circular(15))),
+                        child: Padding(
+                            padding: const EdgeInsets.only(top: 15),
+                            child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 20, right: 10),
+                                    child: SizedBox(
+                                      height: 20,
+                                      child: Row(
+                                        children: [Text(
+                                          "Car Type",
+                                          style: GoogleFonts.roboto(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 18,
+                                              color: const Color(0xFF424242)
+                                          ),
+                                        ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    child: Row(
+                                        children:  [
+                                          RadioItem(values: 3,itemName: 'SUV',group: carTypeSelectedValue,onChange: (val){
+                                            print('Hello this is val $val');
+                                            setState(() {
+                                              carTypeSelectedValue = val;
+                                              carType = 'SUV';
+                                            });
+                                          }),
+                                          Divider(
+                                            height: 2,
+                                            thickness: 0.5,
+                                            color: Color(0xFFC4C4C4),
+                                          ),
+
+
+                                          RadioItem(values: 4,itemName: 'Sedan',group: carTypeSelectedValue,onChange: (val){
+                                            print('Hello this is val $val');
+                                            setState(() {
+                                              carTypeSelectedValue = val;
+                                              carType = 'Sedan';
+                                            });
+                                          }),
+                                          Divider(
+                                            height: 2,
+                                            thickness: 0.5,
+                                            color: Color(0xFFC4C4C4),
+                                          ),
+
+                                          RadioItem(values: 5,itemName: 'Truck',group: carTypeSelectedValue,onChange: (val){
+                                            print('Hello this is val $val');
+                                            setState(() {
+                                              carTypeSelectedValue = val;
+                                              carType = 'Truck';
+                                            });
+                                          }),
+                                          Divider(
+                                            height: 2,
+                                            thickness: 0.5,
+                                            color: Color(0xFFC4C4C4),
+                                          )
+
+
+
+                                        ]
+                                    ),
+                                  )
+                                ]
+                            )
+                        )
+                    )
                 ),
+
+
+                // Duration of lease
+                Positioned(
+                    top: 430,
+                    child: Container(
+                      height: 96.67,
+                      width: 370,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            color: const Color(0xFF424242),
+                          ),
+                          borderRadius: const BorderRadius.all(Radius.circular(15))),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: Column(
+                          children: [
+
+                            Padding(
+                              padding: const EdgeInsets.only(left: 20, right: 10),
+                              child: SizedBox(
+                                height: 20,
+                                child: Row(
+                                  children: [Text(
+                                    "Duration of Lease",
+                                    style: GoogleFonts.roboto(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18,
+                                        color: const Color(0xFF424242)
+                                    ),
+                                  ), const Spacer(), Text(
+                                    "3 months",
+                                    style: GoogleFonts.roboto(
+                                        fontWeight: FontWeight.w400,
+                                        color: const Color(0xFF757575),
+                                        fontSize: 12
+                                    ),
+                                  )
+                                  ],
+                                ),
+                              ),
+                            ),
+
+                            SizedBox(
+                              height: 25,
+                              child: SliderTheme(
+                                data: SliderThemeData(
+                                  overlayShape: SliderComponentShape.noThumb,
+                                ),
+                                child: Slider(
+                                  value: durationOfLease,
+                                  divisions: 12,
+                                  min: 1,
+                                  max: 12,
+                                  activeColor: const Color(0xFF00ff00),
+                                  onChanged: (value) =>
+                                      setState(() => durationOfLease = value),
+                                ),),
+                            ),
+
+                            Padding(
+                              padding: const EdgeInsets.only(left: 20, right: 10),
+                              child: Row(
+                                children: [Text(
+                                  "1 month",
+                                  style: GoogleFonts.roboto(
+                                      fontWeight: FontWeight.w400,
+                                      color: const Color(0xFF757575),
+                                      fontSize: 12
+                                  ),
+                                ), const Spacer(),
+                                  Text(
+                                    "12+ months",
+                                    style: GoogleFonts.roboto(
+                                        fontWeight: FontWeight.w400,
+                                        color: const Color(0xFF757575),
+                                        fontSize: 12
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                ),
+
+
+                Positioned(
+                    top: 745,
+                    child: ElevatedButton(
+                        child: Text("Continue", style: GoogleFonts.roboto(
+                            textStyle: buttonText
+                        )
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            primary: const Color(0xFF00ff00),
+                            minimumSize: const Size(320, 50),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25)
+                            )
+                        ),
+                        onPressed: () async {
+                          print('These are values $numberOfBedrooms ${priceRange.start} ${priceRange.end} $durationOfLease $carType $carLeaser' );
+                          sellerVm.changeDistanceDriven = numberOfBedrooms.toString();
+                          sellerVm.changePriceRangeStart = priceRange.start.toString();
+                          sellerVm.changePriceRangeEnd = priceRange.end.toString();
+                          sellerVm.changeLeaseDuration = durationOfLease.toString();
+                          sellerVm.changeLeaserCar = carLeaser.toString();
+                          sellerVm.changeCarType = carType.toString();
+                          if(await GeneralUtilities.checkInternetConnection() != null){
+                            try{
+                              await sellerVm.saveUser();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => const FeaturesSeller()),
+                              );
+                            }
+                            catch(e){
+                              Fluttertoast.showToast(msg: 'Something went wrong');
+                            }
+                          }
+                          else{
+                            Fluttertoast.showToast(msg: 'Please check internet');
+                          }
+                        // );
+                        }
+                    )
+                ),
+
 
               ]
           )

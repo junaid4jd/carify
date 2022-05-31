@@ -45,7 +45,6 @@ class _NavBarBuyerState extends State<NavBarBuyer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     // backgroundColor: Colors.green,
       body: PageView(
       children: [
         SwipPage(),
@@ -58,45 +57,32 @@ class _NavBarBuyerState extends State<NavBarBuyer> {
         onPageChanged: onPageChanged,
       ),
         bottomNavigationBar: CupertinoTabBar(
-          height: 50,
           items: [
 
             BottomNavigationBarItem(
-                icon: Padding(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: Icon(Icons.person, // 8D8B8BFF
-                      color: _page==0? Color(0xFF00ff00): Color(0xFFD3D3D3) //Colors.white
-                  ),
+                icon: Icon(Icons.person,
+                    color: _page==0? Color(0xFF00ff00): Colors.white
                 ),
                 label:'',
                 backgroundColor: Color(0xFF00ff00)),
 
             BottomNavigationBarItem(
-                icon: Padding(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: Icon(Icons.favorite,
-                      color: _page==1? Color(0xFF00ff00): Color(0xFFD3D3D3)
-                  ),
+                icon: Icon(Icons.favorite,
+                    color: _page==1? Color(0xFF00ff00): Colors.white
                 ),
                 label:'',
                 backgroundColor: Color(0xFF00ff00)),
 
             BottomNavigationBarItem(
-                icon: Padding(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: Icon(Icons.chat_bubble_rounded,
-                      color: _page==2? Color(0xFF00ff00): Color(0xFFD3D3D3)
-                  ),
+                icon: Icon(Icons.chat_bubble_rounded,
+                    color: _page==2? Color(0xFF00ff00): Colors.white
                 ),
                 label:'',
                 backgroundColor: Color(0xFF00ff00)),
 
             BottomNavigationBarItem(
-                icon: Padding(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: Icon(Icons.person,
-                      color: _page==3? Color(0xFF00ff00): Color(0xFFD3D3D3)
-                  ),
+                icon: Icon(Icons.person,
+                    color: _page==3? Color(0xFF00ff00): Colors.white
                 ),
                 label:'',
                 backgroundColor: Color(0xFF00ff00)),

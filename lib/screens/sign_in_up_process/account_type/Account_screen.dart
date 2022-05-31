@@ -55,21 +55,12 @@ class _AccountType extends State<AccountType> {
 
               // Back arrow
               Positioned(
-                top: 85,
-                left: 0,
-                //right: 0,
+                top: 75,
+                right: 345,
                 child: IconButton(
                   icon: const Icon(Icons.arrow_back_ios_rounded),
                   color: const Color(0xFF00ff00),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SignInUpScreen(usertype: '',)
-
-                        ));
-                   // SignInUpScreen
-                    //Navigator.of(context).pop();
+                  onPressed: () {Navigator.of(context).pop();
                   },
                 ),
               ),

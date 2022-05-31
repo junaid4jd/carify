@@ -55,124 +55,123 @@ class _NameScreenBuyerState extends State<NameScreenBuyer> {
     );
 
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SizedBox(
-        height: size.height,
-        width: double.infinity,
-        child: Column(
+    return SizedBox(
+      height: size.height,
+      width: double.infinity,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Stack(
+          alignment: Alignment.center,
           children: <Widget>[
 
-            SizedBox(
-              height: size.height * 0.05,
-            ),
-            Container(
-              width: size.width * 0.9,
-              child: Row(
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.arrow_back_ios_rounded),
-                    color: Color(0xFF00ff00),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => SignInUpScreen(
-                      //               usertype: 'dummy',
-                      //             )));
-                    },
-                  ),
-                ],
-              ),
-            ),
 
-            SizedBox(height: size.height * 0.05),
 
             // Back Arrow
-
+            Positioned(
+              top: 105,
+              right: 340,
+              child: IconButton(
+                icon: const Icon(Icons.arrow_back_ios_rounded),
+                color: const Color(0xFF00ff00),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) =>
+                          AccountType())
+                  );
+                },
+              ),
+            ),
 
 
             // Screen title
-            Align(
-              alignment: const Alignment(0.10, -0.6),
-              child: Text('My full name is',
-                  style: GoogleFonts.roboto(
-                      textStyle: titles,
-                      fontSize: 44
-                  )
-              ),
-            ),
-
-            SizedBox(height: size.height * 0.05),
-            // Text
-            Align(
-              alignment: const Alignment(-0.33, -0.20),
-              child: Text('Your name will be shown',
-                  style: GoogleFonts.roboto(
-                      textStyle: ParStyle,
-                      fontSize: 16,
-                      color: const Color(0xFF757575)
-                  )
-              ),
-            ),
-
-            SizedBox(height: size.height * 0.02),
-            // Text Field
-            Align(
-                alignment: Alignment(0, -0.30),
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(70, 0, 70, 0),
-                  child: TextField(
-                      controller: nameController,
-                      style: TextStyle(fontSize: 18),
-                      keyboardType: TextInputType.text,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]+")),
-                      ], // Only numbers can be entered
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(bottom: 4),
-                          isDense: true,
-                          hintText: "Full name"
-                      )
-                  ),
-                )
-            ),
-
-            Expanded(child: Container()),
-
-            // Continue Button
-            ElevatedButton(
-                child: Text("Continue", style: GoogleFonts.roboto(
-                    textStyle: buttonText
-                )
-                ),
-                style: ElevatedButton.styleFrom(
-                    primary: const Color(0xFF00ff00),
-                    minimumSize: const Size(320, 50),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25)
+            Positioned(
+              child: Align(
+                alignment: const Alignment(0.10, -0.6),
+                child: Text('My full name is',
+                    style: GoogleFonts.roboto(
+                        textStyle: titles,
+                        fontSize: 44
                     )
                 ),
-                onPressed: () async {
-                  if(nameController.text.isNotEmpty){
-                    buyerData.changeName = nameController.text;
-                    print('This is name ${nameController.text}');
-                    Navigator.push(context,
-                      MaterialPageRoute(
-                          builder: (context) => const BirthdayBuyer()),
-                    );
-                  }
-                  else{
-                    Fluttertoast.showToast(msg: 'Name cannot be empty');
-                  }
-
-
-                  //await tenant.add({'Name':name}).then((value) => print('User added'));
-                }
+              ),
             ),
 
-            SizedBox(height: size.height * 0.05),
+
+            // Text
+            Positioned(
+              child: Align(
+                alignment: const Alignment(-0.33, -0.20),
+                child: Text('Your name will be shown',
+                    style: GoogleFonts.roboto(
+                        textStyle: ParStyle,
+                        fontSize: 16,
+                        color: const Color(0xFF757575)
+                    )
+                ),
+              ),
+            ),
+
+
+            // Text Field
+            Positioned(
+                child: Align(
+                    alignment: Alignment(0, -0.30),
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(70, 0, 70, 0),
+                      child: TextField(
+                          controller: nameController,
+                          style: TextStyle(fontSize: 18),
+                          keyboardType: TextInputType.text,
+                          inputFormatters: <TextInputFormatter>[
+                            FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]+")),
+                          ], // Only numbers can be entered
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.only(bottom: 4),
+                              isDense: true,
+                              hintText: "Full name"
+                          )
+                      ),
+                    )
+                )
+            ),
+
+
+            // Continue Button
+            Positioned(
+                top: 660,
+                child: ElevatedButton(
+                    child: Text("Continue", style: GoogleFonts.roboto(
+                        textStyle: buttonText
+                    )
+                    ),
+                    style: ElevatedButton.styleFrom(
+                        primary: const Color(0xFF00ff00),
+                        minimumSize: const Size(320, 50),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25)
+                        )
+                    ),
+                    onPressed: () async {
+                      if(nameController.text.isNotEmpty){
+                        buyerData.changeName = nameController.text;
+                        print('This is name ${nameController.text}');
+                        Navigator.push(context,
+                          MaterialPageRoute(
+                              builder: (context) => const BirthdayBuyer()),
+                        );
+                      }
+                      else{
+                        Fluttertoast.showToast(msg: 'Name cannot be empty');
+                      }
+
+
+                      //await tenant.add({'Name':name}).then((value) => print('User added'));
+                    }
+                )
+            ),
+
+
           ],
         ),
       ),

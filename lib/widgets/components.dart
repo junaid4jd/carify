@@ -16,146 +16,99 @@ class SwipPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-        child: Column(
-          children: [
-            SizedBox(
-              height: size.height*0.03,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Image.asset(
+              "assets/images/honda_civic.jpg",
+              fit: BoxFit.cover,
+              width: double.infinity,
             ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                "assets/images/honda_civic.jpg",
-                fit: BoxFit.cover,
-                width: double.infinity,
-                height: size.height*0.4,
-              ),
-            ),
-
-           // Expanded(child: Container()),
-
-            Container(
-
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: size.height*0.03,
-                  ),
-                  Row(
-                    children: const [
-                      Text(
-                        "Honda Civic",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                        ),
+          ),
+          Positioned(
+            right: 25,
+            bottom: 25,
+            left: 25,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: const [
+                    Text(
+                      "Honda Civic",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
                       ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: size.height*0.05,
-                  ),
-
-                  Container(
-                   // color: Colors.green,
-                    child: Column(
-                      children: [
-
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            const Icon(
-                              Icons.location_on,
-                              color: mainColor,
-                              size: 25,
-                            ),
-                            const SizedBox(width: 10),
-                            const Text(
-                              "10 kilometers",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600
-                              ),
-                            ),
-                            const SizedBox(width: 150),
-                            GestureDetector(
-                              onTap: () => Get.to(DiscoverProfileDetails()),
-                              child: Image.asset(
-                                'assets/icons/info_icon.png',
-                                height: 20,
-                                width: 20,
-                                fit: BoxFit.scaleDown,
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: size.height*0.03,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 8),
-                          child: Row(
-                            children: [
-                              const Text(
-                                "6 rooms. /month.\n12 month lease. Unfurnished,\nPush to start Included",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: size.height*0.05,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Image.asset(
-                                'assets/icons/close_icon.png',
-                                height: 30,
-                                width: 30,
-                              ),
-                              // Spacer(),
-                              const Icon(
-                                Icons.favorite_outline,
-                                color: mainColor,
-                                size: 50,
-                              ),
-                              // Spacer(),
-                              Icon(
-                                Icons.star_border_outlined,
-                                color: mainColor,
-                                size: 50,
-                              )
-                            ],
-                          ),
-                        ),
-
-                      ],
                     ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(
+                      Icons.location_on,
+                      color: mainColor,
+                      size: 15,
+                    ),
+                    const Text(
+                      "10 kilometers",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                      ),
+                    ),
+                    const SizedBox(width: 160),
+                    GestureDetector(
+                      onTap: () => Get.to(DiscoverProfileDetails()),
+                      child: Image.asset(
+                        'assets/icons/info_icon.png',
+                        height: 20,
+                        width: 20,
+                        fit: BoxFit.scaleDown,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                const Text(
+                  "6 rooms. /month.\n12 month lease. Unfurnished,\nPush to start Included",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
                   ),
-
-
-                ],
-              ),
+                ),
+                const SizedBox(height: 13),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Image.asset(
+                      'assets/icons/close_icon.png',
+                      height: 19,
+                      width: 19,
+                    ),
+                    // Spacer(),
+                    const Icon(
+                      Icons.favorite_outline,
+                      color: mainColor,
+                    ),
+                    // Spacer(),
+                    Icon(
+                      Icons.star_border_outlined,
+                      color: mainColor,
+                    )
+                  ],
+                ),
+              ],
             ),
-            SizedBox(
-              height: size.height*0.03,
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -451,106 +404,4 @@ class FilledButton extends StatelessWidget {
     );
   }
 }
-
-
-
-
-// Padding(
-// padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-// child: Stack(
-// children: [
-// ClipRRect(
-// borderRadius: BorderRadius.circular(10),
-// child: Image.asset(
-// "assets/images/honda_civic.jpg",
-// fit: BoxFit.cover,
-// width: double.infinity,
-// ),
-// ),
-// Positioned(
-// right: 25,
-// bottom: 25,
-// left: 25,
-// child: Container(
-// color: Colors.green,
-// child: Column(
-// crossAxisAlignment: CrossAxisAlignment.start,
-// children: [
-// Row(
-// children: const [
-// Text(
-// "Honda Civic",
-// style: TextStyle(
-// color: Colors.white,
-// fontSize: 24,
-// fontWeight: FontWeight.w700,
-// ),
-// ),
-// ],
-// ),
-// const SizedBox(height: 10),
-// Row(
-// mainAxisSize: MainAxisSize.min,
-// children: [
-// const Icon(
-// Icons.location_on,
-// color: mainColor,
-// size: 15,
-// ),
-// const Text(
-// "10 kilometers",
-// style: TextStyle(
-// color: Colors.white,
-// fontSize: 14,
-// ),
-// ),
-// const SizedBox(width: 160),
-// GestureDetector(
-// onTap: () => Get.to(DiscoverProfileDetails()),
-// child: Image.asset(
-// 'assets/icons/info_icon.png',
-// height: 20,
-// width: 20,
-// fit: BoxFit.scaleDown,
-// ),
-// ),
-// ],
-// ),
-// const SizedBox(height: 8),
-// const Text(
-// "6 rooms. /month.\n12 month lease. Unfurnished,\nPush to start Included",
-// style: TextStyle(
-// color: Colors.white,
-// fontSize: 16,
-// ),
-// ),
-// const SizedBox(height: 13),
-// Row(
-// mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-// mainAxisSize: MainAxisSize.max,
-// children: [
-// Image.asset(
-// 'assets/icons/close_icon.png',
-// height: 19,
-// width: 19,
-// ),
-// // Spacer(),
-// const Icon(
-// Icons.favorite_outline,
-// color: mainColor,
-// ),
-// // Spacer(),
-// Icon(
-// Icons.star_border_outlined,
-// color: mainColor,
-// )
-// ],
-// ),
-// ],
-// ),
-// ),
-// ),
-// ],
-// ),
-// );
 

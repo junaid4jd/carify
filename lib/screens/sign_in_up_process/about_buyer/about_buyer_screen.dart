@@ -67,41 +67,32 @@ class _AboutBuyerState extends State<AboutBuyer> {
       backgroundColor: Colors.white,
 
 
-      body: SingleChildScrollView(
-        child: Column(
-        //  alignment: Alignment.center,
-          children: <Widget>[
+      body: Stack(
+        alignment: Alignment.center,
+        children: <Widget>[
 
 
-            SizedBox(
-              height: size.height * 0.05,
+
+          // Back Arrow
+          Positioned(
+            top: 105,
+            right: 340,
+            child: IconButton(
+              icon: const Icon(Icons.arrow_back_ios_rounded),
+              color: const Color(0xFF00ff00),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const FeaturesBuyer())
+                );
+              },
             ),
+          ),
 
-            Container(
-              width: size.width ,
-              child: Row(
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.arrow_back_ios_rounded),
-                    color: Color(0xFF00ff00),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const FeaturesBuyer())
-                      );
-                     // Navigator.of(context).pop();
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => SignInUpScreen(
-                      //               usertype: 'dummy',
-                      //             )));
-                    },
-                  ),
-                ],
-              ),
-            ),
-            Padding(
+          // Screen title
+          Positioned(
+            top: 100,
+            child: Padding(
               padding: const EdgeInsets.only(left: 50, right: 50),
               child: Align(
                 alignment: const Alignment(0.0, -0.6),
@@ -115,14 +106,13 @@ class _AboutBuyerState extends State<AboutBuyer> {
                 ),
               ),
             ),
+          ),
 
-            SizedBox(
-              height: size.height * 0.02,
-            ),
 
-            // Pet or no
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+
+          // Pet or no
+          Positioned(
+              top: 180,
               child: Container(
                   height: 85.67,
                   width: 370,
@@ -191,12 +181,12 @@ class _AboutBuyerState extends State<AboutBuyer> {
                           ]
                       )
                   )
-              ),
-            ),
+              )
+          ),
 
-            // Cleaning
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+          // Cleaning
+          Positioned(
+              top: 280,
               child: Container(
                   height: 85.67,
                   width: 370,
@@ -284,12 +274,12 @@ class _AboutBuyerState extends State<AboutBuyer> {
                           ]
                       )
                   )
-              ),
-            ),
-            //
-            // // Cleaning
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+              )
+          ),
+          //
+          // // Cleaning
+          Positioned(
+              top: 380,
               child: Container(
                   height: 85.67,
                   width: 370,
@@ -320,7 +310,7 @@ class _AboutBuyerState extends State<AboutBuyer> {
                               ),
                             ),
                             Padding(
-                                padding: const EdgeInsets.only(right: 0),
+                                padding: const EdgeInsets.only(right: 10),
 
                                 child: SizedBox(
                                   child: Row(
@@ -353,12 +343,12 @@ class _AboutBuyerState extends State<AboutBuyer> {
                           ]
                       )
                   )
-              ),
-            ),
-            //
-            // // party
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+              )
+          ),
+          //
+          // // party
+          Positioned(
+              top: 480,
               child: Container(
                   height: 85.67,
                   width: 370,
@@ -442,12 +432,12 @@ class _AboutBuyerState extends State<AboutBuyer> {
                           ]
                       )
                   )
-              ),
-            ),
-            //
-            // // Organized
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+              )
+          ),
+          //
+          // // Organized
+          Positioned(
+              top: 580,
               child: Container(
                   height: 85.67,
                   width: 370,
@@ -478,7 +468,7 @@ class _AboutBuyerState extends State<AboutBuyer> {
                               ),
                             ),
                             Padding(
-                                padding: const EdgeInsets.only(right: 35),
+                                padding: const EdgeInsets.only(right: 45),
 
                                 child: SizedBox(
                                   child: Row(
@@ -515,49 +505,45 @@ class _AboutBuyerState extends State<AboutBuyer> {
                           ]
                       )
                   )
-              ),
-            ),
-            //
-            //
-            //
-            //
-            // // Continue Button
-            SizedBox(
-              height: size.height * 0.025,
-            ),
-            ElevatedButton(
-                child: Text("Continue", style: GoogleFonts.roboto(
-                    textStyle: buttonText
-                )
-                ),
-                style: ElevatedButton.styleFrom(
-                    primary: const Color(0xFF00ff00),
-                    minimumSize: const Size(320, 50),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25)
-                    )
-                ),
-                onPressed: () {
-                  // print('This is pet value $havePet');
-                  // print('This is clean time $cleaningTime ');
-                  // print('This is clean time $cleaningTime)
-                  // print('This is smoker $smok);
-                  print('These are values $havePet $cleaningTime $smoker $partier $organized');
-                  buyerVm.setHavePet(havePet);
-                  buyerVm.setCleaningTime(cleaningTime);
-                  buyerVm.setSmoker(smoker);
-                  buyerVm.setPartier(partier);
-                  buyerVm.setOrganized(organized);
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePicBuyer()),
-                );
-                }
-            ),
-            SizedBox(
-              height: size.height * 0.02,
-            ),
+              )
+          ),
+          //
+          //
+          //
+          //
+          // // Continue Button
+          Positioned(
+              top: 680,
+              child: ElevatedButton(
+                  child: Text("Continue", style: GoogleFonts.roboto(
+                      textStyle: buttonText
+                  )
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      primary: const Color(0xFF00ff00),
+                      minimumSize: const Size(320, 50),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25)
+                      )
+                  ),
+                  onPressed: () {
+                    // print('This is pet value $havePet');
+                    // print('This is clean time $cleaningTime ');
+                    // print('This is clean time $cleaningTime)
+                    // print('This is smoker $smok);
+                    print('These are values $havePet $cleaningTime $smoker $partier $organized');
+                    buyerVm.setHavePet(havePet);
+                    buyerVm.setCleaningTime(cleaningTime);
+                    buyerVm.setSmoker(smoker);
+                    buyerVm.setPartier(partier);
+                    buyerVm.setOrganized(organized);
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePicBuyer()),
+                  );
+                  }
+              )
+          ),
 
-          ],
-        ),
+        ],
       ),
     );
 
@@ -571,7 +557,7 @@ class _AboutBuyerState extends State<AboutBuyer> {
           padding: const EdgeInsets.only(left:15),
           child: Text(
             itemName,
-            style: const TextStyle(fontSize: 14.0,color: Color(0xFF757575)),
+            style: const TextStyle(fontSize: 16.0,color: Color(0xFF757575)),
           ),
         ),
         Radio(

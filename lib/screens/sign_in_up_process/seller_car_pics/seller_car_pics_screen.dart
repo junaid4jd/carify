@@ -28,7 +28,7 @@ class _AddPhotoState extends State<AddPhoto> {
           }
           ,
           icon: const Icon(
-            Icons.arrow_back_ios,
+            Icons.arrow_back,
             color: mainColor,
           ),
         ),
@@ -55,7 +55,6 @@ class _AddPhotoState extends State<AddPhoto> {
               fontSize: 16,
             ),
           ),
-
           Expanded(
             child: GridView.count(
                 shrinkWrap: true,
@@ -71,16 +70,16 @@ class _AddPhotoState extends State<AddPhoto> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             image: const DecorationImage(
-                                image: AssetImage('assets/images/honda_civic.jpg'),
+                                image: AssetImage('assets/add_img.png'),
                                 fit: BoxFit.cover)),
-                        // child: ClipRRect(
-                        //   borderRadius: BorderRadius.circular(10),
-                        //   child: Image.asset(
-                        //     'assets/images/honda_civic.jpg',
-                        //     fit: BoxFit.cover,
-                        //     width: double.infinity,
-                        //   ),
-                        // ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.asset(
+                            'assets/add_img.png',
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                          ),
+                        ),
                       ),
                       Positioned(
                         bottom: 10,
