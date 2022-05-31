@@ -1,4 +1,5 @@
 import 'package:carify_app/controller/authentication_controller.dart';
+import 'package:carify_app/controller/buyer_provider.dart';
 import 'package:carify_app/services/authentication_service.dart';
 import 'package:carify_app/utilites/general_utilites.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -39,6 +40,7 @@ class _OTPCode extends State<OTPCode> {
   @override
   Widget build(BuildContext context) {
     var authVm = Provider.of<AuthProvider>(context, listen: false);
+    var buyerVm = Provider.of<BuyerProvider>(context, listen: false);
     print('This mobile number will recive OTP code ${widget.phone}');
 
     Size size = MediaQuery.of(context).size; //provides total height and width of screen for users
@@ -83,6 +85,7 @@ class _OTPCode extends State<OTPCode> {
                             .then((value) {
                           if (value.user != null) {
                             debugPrint('User is logged in ${value.user!.uid}');
+                            buyerVm.changeUid =value.user!.uid;
                             EasyLoading.dismiss();
                             if(widget.userType == 'Seller'){
                               Navigator.pushReplacement(

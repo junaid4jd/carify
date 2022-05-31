@@ -17,11 +17,13 @@ class MyFireStoreService {
   final CollectionReference sellerCollection = FirebaseFirestore.instance.collection('Seller');
 
   Future<void> insertBuyer(BuyerModel buyer) async {
+
     try {
-      print('insert option is called ');
+      print('insert option is called with ${buyer.userid}');
       return await buyerCollection.doc(buyer.userid).set(buyer.toMap());
     } catch (e) {
-      print('Exception is $e');
+      Fluttertoast.showToast(msg: 'Something went wrong');
+      print('Exception at insertion is : $e');
     }
   }
 
@@ -38,7 +40,6 @@ class MyFireStoreService {
       });
     }catch(e){
       print('This is exception while uploading file $e');
-      Fluttertoast.showToast(msg: 'Something went wrong');
     }
 
     return url;

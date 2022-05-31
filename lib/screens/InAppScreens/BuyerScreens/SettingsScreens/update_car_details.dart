@@ -436,7 +436,8 @@ class _UpdateCarDetailsBuyerState extends State<UpdateCarDetailsBuyer> {
                           borderRadius: BorderRadius.circular(25)
                       )
                   ),
-                  onPressed: () { Navigator.push(
+                  onPressed: () {
+                    Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const UpdateCarDetailsBuyer()),
                   );

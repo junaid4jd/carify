@@ -194,6 +194,7 @@ class BuyerProvider extends ChangeNotifier {
   }
 
   Future saveUser() async {
+    print(' $_userid');
     var newBuyer = BuyerModel(
         userid: _userid,
         fullName: _fullName,
