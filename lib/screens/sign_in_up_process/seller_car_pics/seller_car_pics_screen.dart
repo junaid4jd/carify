@@ -56,7 +56,7 @@ class _AddPhotoState extends State<AddPhoto> {
               onPressed: () async {
                 if (await GeneralUtilities.checkInternetConnection() != null) {
                   print('THis is UID of seller ${Provider.of<SellerProvider>(context, listen: false).userid}');
-                  EasyLoading.showToast('Uploading Image it may take some time');
+                  EasyLoading.show(status: 'Uploading Images, it may take some time depending on internet strength');
                   await bucketVm
                       .uploadSellerCarPictures(_images, context)
                       .whenComplete(() => {EasyLoading.showSuccess('Images saved')});
