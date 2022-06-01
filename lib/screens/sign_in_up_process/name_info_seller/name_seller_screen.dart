@@ -97,6 +97,7 @@ class _SellerName extends State<SellerName> {
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25))),
                       onPressed: () {
                         if(nameController.text.isNotEmpty){
+                          // print('This is full name ${nameController.text}');
                           sellerVM.changeName = nameController.text;
                           Navigator.push(
                             context,
