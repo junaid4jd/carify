@@ -106,7 +106,7 @@ class _CarDetailsBuyerState extends State<CarDetailsBuyer> {
                               ),
                               const Spacer(),
                               Text(
-                                "35 kilometers",
+                                '${distance.toStringAsFixed(0)} Km',
                                 style: GoogleFonts.roboto(
                                     fontWeight: FontWeight.w400, color: const Color(0xFF757575), fontSize: 12),
                               )
@@ -181,7 +181,7 @@ class _CarDetailsBuyerState extends State<CarDetailsBuyer> {
                               ),
                               const Spacer(),
                               Text(
-                                "3 bedrooms",
+                                "${numberOfBedrooms.toStringAsFixed(0)} doors",
                                 style: GoogleFonts.roboto(
                                     fontWeight: FontWeight.w400, color: const Color(0xFF757575), fontSize: 12),
                               )
@@ -210,13 +210,13 @@ class _CarDetailsBuyerState extends State<CarDetailsBuyer> {
                         child: Row(
                           children: [
                             Text(
-                              "1 bedroom",
+                              "1 door",
                               style: GoogleFonts.roboto(
                                   fontWeight: FontWeight.w400, color: const Color(0xFF757575), fontSize: 12),
                             ),
                             const Spacer(),
                             Text(
-                              "9+ bedrooms",
+                              "9+ door",
                               style: GoogleFonts.roboto(
                                   fontWeight: FontWeight.w400, color: const Color(0xFF757575), fontSize: 12),
                             )
@@ -254,7 +254,7 @@ class _CarDetailsBuyerState extends State<CarDetailsBuyer> {
                             ),
                             const Spacer(),
                             Text(
-                              "\$6504-23400",
+                              "${priceRange.start.toStringAsFixed(0)} - ${priceRange.end.toStringAsFixed(0)}",
                               style: GoogleFonts.roboto(
                                   fontWeight: FontWeight.w400, color: const Color(0xFF757575), fontSize: 12),
                             )
@@ -329,7 +329,7 @@ class _CarDetailsBuyerState extends State<CarDetailsBuyer> {
                               ),
                               const Spacer(),
                               Text(
-                                "3 months",
+                                "${durationOfLease.toStringAsFixed(0)} months",
                                 style: GoogleFonts.roboto(
                                     fontWeight: FontWeight.w400, color: const Color(0xFF757575), fontSize: 12),
                               )

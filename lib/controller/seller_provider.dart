@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 class SellerProvider extends ChangeNotifier {
   MyFireStoreService fireStoreService = MyFireStoreService();
 
-  String _userid = "";
+  String userid = "";
   String _fullName = "";
   String _gender = "";
   String _address = "";
@@ -49,7 +49,7 @@ class SellerProvider extends ChangeNotifier {
   }
 
   set changeuid(String uid) {
-    _userid = uid;
+    userid = uid;
     notifyListeners();
   }
 
@@ -76,7 +76,7 @@ class SellerProvider extends ChangeNotifier {
 
   saveUser() async {
     var newSeller = SellerModel(
-        userid: _userid,
+        userid: userid,
         fullName: _fullName,
         address: _address,
         gender: _gender,

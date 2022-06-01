@@ -142,7 +142,7 @@ class _CarDetailsSeller extends State<CarDetailsSeller> {
                                         color: const Color(0xFF424242)
                                     ),
                                   ), const Spacer(), Text(
-                                    "30000 km",
+                                    "${distance.toStringAsFixed(0)} km",
                                     style: GoogleFonts.roboto(
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xFF757575),
@@ -161,13 +161,13 @@ class _CarDetailsSeller extends State<CarDetailsSeller> {
                                   overlayShape: SliderComponentShape.noThumb,
                                 ),
                                 child: Slider(
-                                  value: numberOfBedrooms,
+                                  value: distance,
                                   divisions: 10,
                                   min: 1,
-                                  max: 10,
+                                  max: 100,
                                   activeColor: const Color(0xFF00ff00),
                                   onChanged: (value) =>
-                                      setState(() => numberOfBedrooms = value),
+                                      setState(() => distance = value),
                                 ),),
                             ),
 
@@ -175,7 +175,7 @@ class _CarDetailsSeller extends State<CarDetailsSeller> {
                               padding: const EdgeInsets.only(left: 10, right: 10),
                               child: Row(
                                 children: [Text(
-                                  "1 bedroom",
+                                  "1 km",
                                   style: GoogleFonts.roboto(
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xFF757575),
@@ -183,7 +183,7 @@ class _CarDetailsSeller extends State<CarDetailsSeller> {
                                   ),
                                 ), const Spacer(),
                                   Text(
-                                    "9+ bedrooms",
+                                    "100 km",
                                     style: GoogleFonts.roboto(
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xFF757575),
@@ -226,7 +226,7 @@ class _CarDetailsSeller extends State<CarDetailsSeller> {
                                       color: const Color(0xFF424242)
                                   ),
                                 ), const Spacer(), Text(
-                                  "\$6560-240033",
+                                  "\$${priceRange.start.toStringAsFixed(0)} - \$${priceRange.end.toStringAsFixed(0)}",
                                   style: GoogleFonts.roboto(
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xFF757575),
@@ -266,7 +266,7 @@ class _CarDetailsSeller extends State<CarDetailsSeller> {
                                 ),
                               ), const Spacer(),
                                 Text(
-                                  "\$40004",
+                                  "\$4000",
                                   style: GoogleFonts.roboto(
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xFF757575),
@@ -474,7 +474,7 @@ class _CarDetailsSeller extends State<CarDetailsSeller> {
                                         color: const Color(0xFF424242)
                                     ),
                                   ), const Spacer(), Text(
-                                    "3 months",
+                                    "${durationOfLease.toStringAsFixed(0)}",
                                     style: GoogleFonts.roboto(
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xFF757575),

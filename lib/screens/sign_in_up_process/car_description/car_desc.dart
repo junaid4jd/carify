@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../account_type/Account_screen.dart';
@@ -71,7 +72,7 @@ class _SellerName extends State<SellerName> {
 
 
               // Text Field
-              const Positioned(
+               Positioned(
                   child: Align(
                       alignment: Alignment(0, -0.30),
                       child: Expanded(
@@ -79,11 +80,14 @@ class _SellerName extends State<SellerName> {
                           padding: EdgeInsets.fromLTRB(70, 0, 70, 0),
                           child: TextField(
                               style: TextStyle(fontSize: 18),
-                              keyboardType: TextInputType.name,
+                              keyboardType: TextInputType.text,
+                              inputFormatters: <TextInputFormatter>[
+                                FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]+")),
+                              ],
                               decoration: InputDecoration(
                                   contentPadding: EdgeInsets.only(bottom: 4),
                                   isDense: true,
-                                  hintText: "House Description"
+                                  hintText: "Full Name"
                               )),
                         ),
                       )

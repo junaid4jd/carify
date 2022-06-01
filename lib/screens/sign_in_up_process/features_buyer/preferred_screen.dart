@@ -86,156 +86,159 @@ class _FeaturesBuyerState extends State<FeaturesBuyer> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 90),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      'Push to Start',
-                      style: TextStyle(fontSize: 18, color: Color(0xFF00ff00)),
-                    ),
-                    Checkbox(
-                      checkColor: Colors.white,
-                      activeColor: Color(0xFF00ff00),
-                      value: Provider.of<BuyerProvider>(context).pushToStart,
-                      onChanged: (bool? value) {
-                        print('This is value i will push to start $value');
-                        buyerVm.setPushToStartValue(value!);
-                        // checkValueVm.setcheckValue(value!);
-                      },
-                    ),
-                  ],
-                ),
-                Text(
-                  'Wifi',
-                  style: TextStyle(fontSize: 18, color: Color(0xFF00ff00)),
-                ),
-                Checkbox(
-                  checkColor: Colors.white,
-                  activeColor: Color(0xFF00ff00),
-                  value: Provider.of<BuyerProvider>(context).wifi,
-                  onChanged: (bool? value) {
-                    print('This is value i will wifi $value');
-                    buyerVm.setWifiValue(value!);
-                    // checkValueVm.setcheckValue(value!);
-                  },
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Push to Start',
+                    style: TextStyle(fontSize: 18, color: Color(0xFF00ff00)),
+                  ),
+                  Checkbox(
+                    checkColor: Colors.white,
+                    activeColor: Color(0xFF00ff00),
+                    value: Provider.of<BuyerProvider>(context).pushToStart,
+                    onChanged: (bool? value) {
+                      print('This is value i will push to start $value');
+                      buyerVm.setPushToStartValue(value!);
+                      // checkValueVm.setcheckValue(value!);
+                    },
+                  ),
+                  Text(
+                    'Wifi',
+                    style: TextStyle(fontSize: 18, color: Color(0xFF00ff00)),
+                  ),
+                  Checkbox(
+                    checkColor: Colors.white,
+                    activeColor: Color(0xFF00ff00),
+                    value: Provider.of<BuyerProvider>(context).wifi,
+                    onChanged: (bool? value) {
+                      print('This is value i will wifi $value');
+                      buyerVm.setWifiValue(value!);
+                      // checkValueVm.setcheckValue(value!);
+                    },
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      'Touch Screen',
-                      style: TextStyle(fontSize: 18, color: Color(0xFF00ff00)),
-                    ),
-                    Checkbox(
-                      checkColor: Colors.white,
-                      activeColor: Color(0xFF00ff00),
-                      value: Provider.of<BuyerProvider>(context).touchScreen,
-                      onChanged: (bool? value) {
-                        print('This is value i will toch to screen $value');
-                        buyerVm.setTouchScreenValue(value!);
-                        // checkValueVm.setcheckValue(value!);
-                      },
-                    ),
-                  ],
-                ),
-                Text(
-                  'Bluetooth',
-                  style: TextStyle(fontSize: 18, color: Color(0xFF00ff00)),
-                ),
-                Checkbox(
-                  checkColor: Colors.white,
-                  activeColor: Color(0xFF00ff00),
-                  value: Provider.of<BuyerProvider>(context).bluetooth,
-                  onChanged: (bool? value) {
-                    print('This is value i will set bluetooth $value');
-                    buyerVm.setBluetoothValue(value!);
-                    // checkValueVm.setcheckValue(value!);
-                  },
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Touch Screen',
+                    style: TextStyle(fontSize: 18, color: Color(0xFF00ff00)),
+                  ),
+                  Checkbox(
+                    checkColor: Colors.white,
+                    activeColor: Color(0xFF00ff00),
+                    value: Provider.of<BuyerProvider>(context).touchScreen,
+                    onChanged: (bool? value) {
+                      print('This is value i will toch to screen $value');
+                      buyerVm.setTouchScreenValue(value!);
+                      // checkValueVm.setcheckValue(value!);
+                    },
+                  ),
+                  Text(
+                    'Bluetooth',
+                    style: TextStyle(fontSize: 18, color: Color(0xFF00ff00)),
+                  ),
+                  Checkbox(
+                    checkColor: Colors.white,
+                    activeColor: Color(0xFF00ff00),
+                    value: Provider.of<BuyerProvider>(context).bluetooth,
+                    onChanged: (bool? value) {
+                      print('This is value i will set bluetooth $value');
+                      buyerVm.setBluetoothValue(value!);
+                      // checkValueVm.setcheckValue(value!);
+                    },
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      'Mini-Fridge',
-                      style: TextStyle(fontSize: 18, color: Color(0xFF00ff00)),
-                    ),
-                    Checkbox(
-                      checkColor: Colors.white,
-                      activeColor: Color(0xFF00ff00),
-                      value: Provider.of<BuyerProvider>(context).miniFridge,
-                      onChanged: (bool? value) {
-                        print('This is value i will set minifridge $value');
-                        buyerVm.setMiniFridgeValue(value!);
-                        // checkValueVm.setcheckValue(value!);
-                      },
-                    ),
-                  ],
-                ),
-                Text(
-                  'A/C',
-                  style: TextStyle(fontSize: 18, color: Color(0xFF00ff00)),
-                ),
-                Checkbox(
-                  checkColor: Colors.white,
-                  activeColor: Color(0xFF00ff00),
-                  value: Provider.of<BuyerProvider>(context).ac,
-                  onChanged: (bool? value) {
-                    print('This is value i will set ac $value');
-                    buyerVm.setAcValue(value!);
-                    // checkValueVm.setcheckValue(value!);
-                  },
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        'Mini-Fridge',
+                        style: TextStyle(fontSize: 18, color: Color(0xFF00ff00)),
+                      ),
+                      SizedBox(width: size.width * 0.12),
+                      Checkbox(
+                        checkColor: Colors.white,
+                        activeColor: Color(0xFF00ff00),
+                        value: Provider.of<BuyerProvider>(context).miniFridge,
+                        onChanged: (bool? value) {
+                          print('This is value i will set minifridge $value');
+                          buyerVm.setMiniFridgeValue(value!);
+                          // checkValueVm.setcheckValue(value!);
+                        },
+                      ),
+                    ],
+                  ),
+                  Text(
+                    'A/C',
+                    style: TextStyle(fontSize: 18, color: Color(0xFF00ff00)),
+                  ),
+                  Checkbox(
+                    checkColor: Colors.white,
+                    activeColor: Color(0xFF00ff00),
+                    value: Provider.of<BuyerProvider>(context).ac,
+                    onChanged: (bool? value) {
+                      print('This is value i will set ac $value');
+                      buyerVm.setAcValue(value!);
+                      // checkValueVm.setcheckValue(value!);
+                    },
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      'TV',
-                      style: TextStyle(fontSize: 18, color: Color(0xFF00ff00)),
-                    ),
-                    Checkbox(
-                      checkColor: Colors.white,
-                      activeColor: Color(0xFF00ff00),
-                      value: Provider.of<BuyerProvider>(context).tv,
-                      onChanged: (bool? value) {
-                        print('This is value i will set tv $value');
-                        buyerVm.setTvValue(value!);
-                        // checkValueVm.setcheckValue(value!);
-                      },
-                    ),
-                  ],
-                ),
-                Text(
-                  'Leather Seats',
-                  style: TextStyle(fontSize: 18, color: Color(0xFF00ff00)),
-                ),
-                Checkbox(
-                  checkColor: Colors.white,
-                  activeColor: Color(0xFF00ff00),
-                  value: Provider.of<BuyerProvider>(context).leatherSeat,
-                  onChanged: (bool? value) {
-                    print('This is value i will set leatherseat $value');
-                    buyerVm.setLeatherSeatValue(value!);
-                    // checkValueVm.setcheckValue(value!);
-                  },
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'TV',
+                    style: TextStyle(fontSize: 18, color: Color(0xFF00ff00)),
+                  ),
+                  SizedBox(width: size.width * 0.2),
+                  Checkbox(
+                    checkColor: Colors.white,
+                    activeColor: Color(0xFF00ff00),
+                    value: Provider.of<BuyerProvider>(context).tv,
+                    onChanged: (bool? value) {
+                      print('This is value i will set tv $value');
+                      buyerVm.setTvValue(value!);
+                      // checkValueVm.setcheckValue(value!);
+                    },
+                  ),
+                  Text(
+                    'Leather Seats',
+                    style: TextStyle(fontSize: 18, color: Color(0xFF00ff00)),
+                  ),
+                  Checkbox(
+                    checkColor: Colors.white,
+                    activeColor: Color(0xFF00ff00),
+                    value: Provider.of<BuyerProvider>(context).leatherSeat,
+                    onChanged: (bool? value) {
+                      print('This is value i will set leatherseat $value');
+                      buyerVm.setLeatherSeatValue(value!);
+                      // checkValueVm.setcheckValue(value!);
+                    },
+                  ),
+                ],
+              ),
             ),
           ],
         ),
