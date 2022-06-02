@@ -83,7 +83,7 @@ class _AccountType extends State<AccountType> {
               ),
               // Tenant Button
               Positioned(
-                  top: 460,
+                  top: size.height *0.7,
                   child: ElevatedButton(
                       child: Text("Buyer", style: GoogleFonts.roboto(
                           textStyle: buttonText
@@ -116,7 +116,7 @@ class _AccountType extends State<AccountType> {
 
               // Landlord Button
               Positioned(
-                  top: 570,
+                  top: size.height *0.87,
                   child: ElevatedButton(
                       child: Text("Seller", style: GoogleFonts.roboto(
                           textStyle: buttonText
