@@ -148,15 +148,19 @@ class _SignUpNumberTenant extends State<SignUpNumberTenant> {
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25))),
                   onPressed: () async {
                     print('This is mobile number: ${phoneNum}');
-                    if (await GeneralUtilities.checkInternetConnection() != null) {
-                      EasyLoading.show();
-                      await auth.verifyPhoneNumber(phoneNum, context).then((value) async {
-                        EasyLoading.dismiss();
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => OTPCode(phone: phoneNum,userType: widget.userType,)),
-                        );
-                      });
-                    } else {
-                      Fluttertoast.showToast(msg: 'Please check internet');
+                    if(phoneNum.isNotEmpty){
+                      if (await GeneralUtilities.checkInternetConnection() != null) {
+                        EasyLoading.show();
+                        await auth.verifyPhoneNumber(phoneNum, context).then((value) async {
+                          EasyLoading.dismiss();
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => OTPCode(phone: phoneNum,userType: widget.userType,)),
+                          );
+                        });
+                      } else {
+                        Fluttertoast.showToast(msg: 'Please check internet');
+                    }
+                    }else{
+                      Fluttertoast.showToast(msg: 'Phone Number can not be Empty');
                     }
 
                     // whenComplete(() {
