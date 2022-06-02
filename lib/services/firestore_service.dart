@@ -50,6 +50,7 @@ class MyFireStoreService {
       print('insert option is called ');
       //var options = SetOptions(merge: true);
       // print(options);
+      print('Hey i got the full name here ${seller.fullName}');
       return await sellerCollection.doc(seller.userid).set(
         seller.toMap()
       );

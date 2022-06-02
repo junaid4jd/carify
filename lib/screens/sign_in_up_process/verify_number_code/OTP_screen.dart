@@ -2,7 +2,6 @@ import 'package:carify_app/controller/authentication_controller.dart';
 import 'package:carify_app/controller/buyer_provider.dart';
 import 'package:carify_app/controller/seller_provider.dart';
 import 'package:carify_app/services/authentication_service.dart';
-import 'package:carify_app/utilites/general_utilites.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -11,8 +10,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:provider/provider.dart';
-
-import '../account_type/Account_screen.dart';
 import '../car_description/car_desc.dart';
 import '../name_info_buyer/name_screen_buyer.dart';
 import '../signup_number/signup_number_screen.dart';
@@ -91,6 +88,7 @@ class _OTPCode extends State<OTPCode> {
                             sellerVm.changeuid = value.user!.uid;
                             EasyLoading.dismiss();
                             if(widget.userType == 'Seller'){
+                              sellerVm.changePhone = widget.phone;
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
@@ -98,7 +96,7 @@ class _OTPCode extends State<OTPCode> {
                               );
                             }
                             else if(widget.userType =='Buyer'){
-
+                              buyerVm.changeMobile = widget.phone;
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(

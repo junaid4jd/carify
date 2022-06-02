@@ -95,10 +95,10 @@ class _SellerName extends State<SellerName> {
                           primary: const Color(0xFF00ff00),
                           minimumSize: const Size(320, 50),
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25))),
-                      onPressed: () {
+                      onPressed: ()async {
                         if(nameController.text.isNotEmpty){
-                          // print('This is full name ${nameController.text}');
-                          sellerVM.changeName = nameController.text;
+                           print('This is full name ${nameController.text}');
+                        sellerVM.changeName = nameController.text;
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => const BirthdayScreenSeller()),

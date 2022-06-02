@@ -56,6 +56,7 @@ class SellerProvider extends ChangeNotifier {
   set changeName(String name) {
     print('I am gonna set this $name');
     _fullName = name;
+    print('I set the name in provider $_fullName');
     notifyListeners();
   }
 
@@ -75,6 +76,7 @@ class SellerProvider extends ChangeNotifier {
   }
 
   saveUser() async {
+    print('This is full name in provider ${_fullName.toString()}');
     var newSeller = SellerModel(
         userid: userid,
         fullName: _fullName,
