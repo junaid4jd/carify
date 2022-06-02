@@ -1,7 +1,6 @@
 import 'package:carify_app/controller/buyer_provider.dart';
 import 'package:carify_app/controller/seller_provider.dart';
 import 'package:carify_app/screens/sign_in_up_process/account_type/Account_screen.dart';
-import 'package:carify_app/screens/sign_in_up_process/name_info_buyer/name_screen_buyer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -37,7 +36,7 @@ void main() async {
        //  SignInUpScreen(),
       home:
       // AddPhoto()
-      NameScreenBuyer(),
+       AccountType(),
     ),
   ));
 }
