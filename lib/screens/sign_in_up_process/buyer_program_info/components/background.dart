@@ -39,7 +39,7 @@ class Background extends StatelessWidget {
 
               // Back arrow
               Positioned(
-                top: 105,
+                top: 35,
                 right: 340,
                 child: IconButton(
                   icon: const Icon(Icons.arrow_back_ios_rounded),
@@ -102,7 +102,7 @@ class Background extends StatelessWidget {
 
               // Continue button
               Positioned(
-                  top: 660,
+                  top: size.height * 0.9,
                   child: ElevatedButton(
                       child: Text("Continue", style: GoogleFonts.roboto(
                           textStyle: buttonText

@@ -105,11 +105,6 @@ class _AccountType extends State<AccountType> {
                         MaterialPageRoute(builder: (context) =>  SignInUpScreen(usertype: 'Buyer')),
                       );
                       acc_type = "Buyer";
-                      //AuthMethods().addUserInfo(phoneNum: widget.phone, accountType: acc_type);
-                        //print(UserID);
-
-                      //await users.doc(UserID).update({'AccountType': account_type, 'UserID': UserID}).then((value) => print('Account Type Added'));
-
                       }
                   )
               ),
@@ -130,50 +125,14 @@ class _AccountType extends State<AccountType> {
                           )
                       ),
                       onPressed: () async {
-
                         var sellerVM = Provider.of<SellerProvider>(context,listen: false);
-                        // sellerVM.changeuid = widget.userId;
-                        // sellerVM.changePhone = widget.phone;
                         Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) =>  SignInUpScreen(usertype: 'Seller')),
                       );
-                      // acc_type = "Landlord";
-                      //
-                      // await users.add({'PhoneNumber': widget.phone, 'AccountType': acc_type}).then((value) => print('Account Type Added.'));
-                      //await users.doc(UserID).set({'PhoneNumber': widget.phone, 'AccountType': account_type});
-
-
-
-
                       }
                   )
               ),
-
-              // Subletting Button
-              // Positioned(
-              //     top: 680,
-              //     child: ElevatedButton(
-              //         child: Text("Seller", style: GoogleFonts.roboto(
-              //             textStyle: buttonText
-              //         )
-              //         ),
-              //         style: ElevatedButton.styleFrom(
-              //             primary: const Color(0xFFFFFFFF),
-              //             minimumSize: const Size(320, 50),
-              //             shape: RoundedRectangleBorder(
-              //                 borderRadius: BorderRadius.circular(10)
-              //             )
-              //         ),
-              //         onPressed: () {
-              //
-              //           Navigator.push(
-              //           context,
-              //           MaterialPageRoute(builder: (context) => const SellerName()),
-              //         );
-              //         }
-              //     )
-              // ),
 
 
             ],

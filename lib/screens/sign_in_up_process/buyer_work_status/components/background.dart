@@ -43,7 +43,7 @@ class _BackgroundState extends State<Background> {
             children: <Widget>[
               // Back Arrow
               Positioned(
-                top: 105,
+                top: 30,
                 right: 340,
                 child: IconButton(
                   icon: const Icon(Icons.arrow_back_ios_rounded),
@@ -56,26 +56,21 @@ class _BackgroundState extends State<Background> {
 
               // Screen title
               Positioned(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 50, right: 50),
-                  child: Align(
-                    alignment: const Alignment(0.0, -0.6),
-                    child: Text(
-                      'My work status is',
-                      style: GoogleFonts.roboto(
-                        textStyle: titles,
-                        fontSize: 44,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
+                top: size.height * 0.15,
+                child: Text(
+                  'My work status is',
+                  style: GoogleFonts.roboto(
+                    textStyle: titles,
+                    fontSize: size.height * 0.05,
                   ),
+                  textAlign: TextAlign.center,
                 ),
               ),
 
               // Radio Items and decoration
               Positioned(
                 child: Padding(
-                  padding: const EdgeInsets.only(),
+                  padding: const EdgeInsets.only(top: 20),
                   child: Align(
                       alignment: const Alignment(0.0, 0.12),
                       child: Consumer<BuyerProvider>(
@@ -112,7 +107,7 @@ class _BackgroundState extends State<Background> {
 
               // Continue button
               Positioned(
-                  top: 660,
+                  top: size.height * 0.9,
                   child: ElevatedButton(
                       child: Text("Continue", style: GoogleFonts.roboto(textStyle: buttonText)),
                       style: ElevatedButton.styleFrom(

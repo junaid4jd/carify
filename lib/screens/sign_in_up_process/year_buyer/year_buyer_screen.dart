@@ -159,7 +159,7 @@ class _YearBuyerScreenState extends State<YearBuyerScreen> {
 
               // Continue Button
               Positioned(
-                  top: 660,
+                  top: size.height*0.9,
                   child: ElevatedButton(
                       child: Text("Continue", style: GoogleFonts.roboto(
                           textStyle: buttonText
